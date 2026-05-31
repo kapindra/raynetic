@@ -44,31 +44,44 @@
   border-color: var(--color-accent);
 }
 
-/* Gradient Border Hover Effect for Service Cards */
+/* Gradient Border Hover Effect for Service Cards (Double-Background Technique) */
 .gradient-border-card {
-  position: relative;
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   background: var(--color-surface);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gradient-border-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 17px;
-  background: linear-gradient(135deg, transparent, transparent);
-  z-index: -1;
-  transition: background 0.4s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 }
 
 .gradient-border-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+  /* Use transparent border to expose the underlying border-box gradient */
+  border: 1px solid transparent;
+  /* padding-box fills card background, border-box fills the transparent border area */
+  background: 
+    linear-gradient(#050811, #050811) padding-box,
+    linear-gradient(135deg, var(--color-accent), var(--color-accent-2)) border-box;
+  background-clip: padding-box, border-box;
+  /* Deep shadow with zero glowing haze behind text */
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9);
 }
 
-.gradient-border-card:hover::before {
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+/* Text Visibility and Legibility Enhancements on Hover */
+.gradient-border-card p,
+.gradient-border-card h3,
+.gradient-border-card a {
+  transition: color 0.3s ease;
+}
+
+.gradient-border-card:hover p {
+  color: #E8EDF7 !important; /* High contrast bright grey */
+}
+
+.gradient-border-card:hover h3 {
+  color: var(--color-accent) !important; /* Vibrant teal */
+}
+
+.gradient-border-card:hover a {
+  color: #FFFFFF !important;
 }
 
 /* Pulsing CTA Gradient Animation */
