@@ -58,11 +58,11 @@
   border: 1px solid transparent;
   /* padding-box fills card background, border-box fills the transparent border area */
   background: 
-    linear-gradient(#050811, #050811) padding-box,
+    linear-gradient(var(--color-card-hover-bg), var(--color-card-hover-bg)) padding-box,
     linear-gradient(135deg, var(--color-accent), var(--color-accent-2)) border-box;
   background-clip: padding-box, border-box;
-  /* Deep shadow with zero glowing haze behind text */
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9);
+  /* Premium dynamic shadow */
+  box-shadow: var(--shadow-hover);
 }
 
 /* Text Visibility and Legibility Enhancements on Hover */
@@ -73,7 +73,7 @@
 }
 
 .gradient-border-card:hover p {
-  color: #E8EDF7 !important; /* High contrast bright grey */
+  color: var(--color-card-hover-text) !important;
 }
 
 .gradient-border-card:hover h3 {
@@ -81,7 +81,7 @@
 }
 
 .gradient-border-card:hover a {
-  color: #FFFFFF !important;
+  color: var(--color-card-hover-link) !important;
 }
 
 /* Pulsing CTA Gradient Animation */
