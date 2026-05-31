@@ -20,16 +20,9 @@ const services = [
 <header id="site-header" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 py-6">
   <div class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
     
-    <!-- Logo SVG -->
-    <a href="/" class="flex items-center gap-2 group outline-none focus:ring-2 focus:ring-accent rounded-lg" aria-label="Raynatic Solutions Home">
-      <svg class="w-8 h-8 text-accent transition-transform duration-300 group-hover:rotate-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50 15L15 45L25 55L50 35L75 55L85 45L50 15Z" fill="currentColor"/>
-        <path d="M50 40L25 65L35 75L50 60L65 75L75 65L50 40Z" fill="var(--color-accent-2)"/>
-        <circle cx="50" cy="80" r="8" fill="currentColor"/>
-      </svg>
-      <span class="text-xl font-bold font-display tracking-tight text-white">
-        Raynatic<span class="text-accent">.</span>
-      </span>
+    <!-- Logo -->
+    <a href="/" class="flex items-center h-10 group outline-none focus:ring-2 focus:ring-accent rounded-lg" aria-label="Raynetic Solutions Home">
+      <img src="/images/logo.png?v=3" width="140" height="40" alt="Raynetic Solutions Logo" class="h-full w-auto logo-img transition-all duration-300 group-hover:opacity-90" />
     </a>
 
     <!-- Desktop Navigation -->
@@ -57,7 +50,7 @@ const services = [
           
           <!-- Services Dropdown Mega Menu -->
           <div class="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:pointer-events-auto transition-all duration-300 w-[450px]">
-            <div class="glass-panel rounded-2xl p-6 shadow-card grid grid-cols-1 gap-4">
+            <div class="bg-surface border border-border rounded-2xl p-6 shadow-card grid grid-cols-1 gap-4">
               <div class="pb-2 border-b border-border">
                 <span class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">Our IT Core Expertise</span>
               </div>
@@ -146,7 +139,7 @@ const services = [
   <!-- Mobile Overlay Menu -->
   <div 
     id="mobile-overlay" 
-    class="fixed inset-0 top-[80px] bg-bg/95 backdrop-blur-xl z-30 opacity-0 pointer-events-none lg:hidden transition-all duration-300"
+    class="fixed inset-0 top-[80px] bg-bg z-30 opacity-0 pointer-events-none lg:hidden transition-all duration-300"
     role="dialog"
     aria-modal="true"
     aria-label="Mobile Navigation Drawer"

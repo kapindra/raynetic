@@ -192,6 +192,7 @@ img {
 [data-theme="light"] a.text-white,
 [data-theme="light"] strong.text-white,
 [data-theme="light"] label.text-white,
+[data-theme="light"] summary.text-white,
 [data-theme="light"] button.text-white {
   color: var(--color-heading) !important;
 }
@@ -218,6 +219,7 @@ img {
 [data-theme="dark"] a.text-white,
 [data-theme="dark"] strong.text-white,
 [data-theme="dark"] label.text-white,
+[data-theme="dark"] summary.text-white,
 [data-theme="dark"] button.text-white {
   color: #FFFFFF !important;
 }
@@ -248,4 +250,13 @@ img {
 }
 [data-theme="dark"] #theme-toggle-moon {
   display: none;
+}
+
+/* Logo Adaptive Sizing & Dark Theme Filter */
+.logo-img {
+  height: 40px !important;
+  width: auto !important;
+}
+[data-theme="dark"] .logo-img {
+  filter: brightness(0) invert(1);
 }
