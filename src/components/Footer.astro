@@ -1,0 +1,143 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-border bg-bg-2 pt-20 pb-10 relative">
+  <div class="max-w-7xl mx-auto px-4 md:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+      
+      <!-- Column 1: Brand Details -->
+      <div class="lg:col-span-4 space-y-6">
+        <a href="/" class="flex items-center gap-2 group outline-none" aria-label="Raynatic Solutions Home">
+          <svg class="w-8 h-8 text-accent transition-transform duration-300 group-hover:rotate-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 15L15 45L25 55L50 35L75 55L85 45L50 15Z" fill="currentColor"/>
+            <path d="M50 40L25 65L35 75L50 60L65 75L75 65L50 40Z" fill="var(--color-accent-2)"/>
+            <circle cx="50" cy="80" r="8" fill="currentColor"/>
+          </svg>
+          <span class="text-xl font-bold font-display tracking-tight text-white">
+            Raynatic<span class="text-accent">.</span>
+          </span>
+        </a>
+        <p class="text-sm text-text-muted max-w-sm">
+          We design, build, and optimize the secure technological infrastructures that empower forward-thinking mid-market companies globally.
+        </p>
+        
+        <!-- Social Icons -->
+        <div class="flex items-center gap-4">
+          <a href="https://www.linkedin.com/company/raynatic" target="_blank" rel="noopener noreferrer" class="p-2 border border-border rounded-lg text-text-muted hover:text-accent hover:border-accent transition-colors" aria-label="LinkedIn">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+          <a href="https://twitter.com/raynatic" target="_blank" rel="noopener noreferrer" class="p-2 border border-border rounded-lg text-text-muted hover:text-accent hover:border-accent transition-colors" aria-label="Twitter/X">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/raynatic" target="_blank" rel="noopener noreferrer" class="p-2 border border-border rounded-lg text-text-muted hover:text-accent hover:border-accent transition-colors" aria-label="GitHub">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+            </svg>
+          </a>
+        </div>
+        
+        <div class="text-xs text-text-muted font-mono flex items-center gap-2">
+          <span>🇦🇺</span> Proudly based in Melbourne, Australia
+        </div>
+      </div>
+
+      <!-- Column 2: Company -->
+      <div class="lg:col-span-2 lg:pl-4 space-y-4">
+        <h3 class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">Company</h3>
+        <ul class="space-y-2">
+          <li><a href="/about" class="text-sm text-text hover:text-accent transition-colors">About Us</a></li>
+          <li><a href="/services" class="text-sm text-text hover:text-accent transition-colors">Services</a></li>
+          <li><a href="/case-studies" class="text-sm text-text hover:text-accent transition-colors">Case Studies</a></li>
+          <li><a href="/blog" class="text-sm text-text hover:text-accent transition-colors">Blog & News</a></li>
+          <li><span class="text-sm text-text-faint cursor-not-allowed">Careers (Hiring)</span></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Services -->
+      <div class="lg:col-span-3 space-y-4">
+        <h3 class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">Expertise</h3>
+        <ul class="space-y-2">
+          <li><a href="/services/software-development" class="text-sm text-text hover:text-accent transition-colors">Software Development</a></li>
+          <li><a href="/services/cloud-devops" class="text-sm text-text hover:text-accent transition-colors">Cloud Migration & DevOps</a></li>
+          <li><a href="/services/managed-it-support" class="text-sm text-text hover:text-accent transition-colors">Managed IT Support (SLA)</a></li>
+          <li><a href="/services/cybersecurity" class="text-sm text-text hover:text-accent transition-colors">Cybersecurity Consulting</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact -->
+      <div class="lg:col-span-3 space-y-4">
+        <h3 class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">Office</h3>
+        <ul class="space-y-3 text-sm">
+          <li class="text-text-muted">
+            Level 12, 120 Collins Street<br />
+            Melbourne VIC 3000, Australia
+          </li>
+          <li>
+            <a href="mailto:hello@raynatic.com.au" class="text-accent hover:underline block font-mono">hello@raynatic.com.au</a>
+          </li>
+          <li>
+            <a href="tel:+61390000000" class="text-text hover:text-accent transition-colors block font-mono">+61 3 9000 0000</a>
+          </li>
+          <li class="text-xs text-text-muted font-mono">
+            Mon - Fri / 9:00 AM - 5:30 PM AEST
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-border pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Footer Bottom Left -->
+      <div class="text-xs text-text-muted space-y-2 text-center md:text-left">
+        <div>
+          &copy; {currentYear} Raynatic Solutions Pty Ltd. All rights reserved.
+        </div>
+        <div>
+          ABN: 12 345 678 910
+        </div>
+      </div>
+
+      <!-- Footer Bottom Center (Legal Links) -->
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
+        <a href="/privacy-policy" class="text-text-muted hover:text-accent transition-colors">Privacy Policy</a>
+        <span class="text-border">|</span>
+        <a href="/terms" class="text-text-muted hover:text-accent transition-colors">Terms of Service</a>
+        <span class="text-border">|</span>
+        <a href="/cookie-policy" class="text-text-muted hover:text-accent transition-colors">Cookie Policy</a>
+        <span class="text-border">|</span>
+        <!-- Button to show cookie preferences again -->
+        <button id="footer-cookie-pref-trigger" class="text-text-muted hover:text-accent transition-colors outline-none cursor-pointer">
+          Cookie Preferences
+        </button>
+      </div>
+
+      <!-- Footer Bottom Right -->
+      <div class="text-xs text-text-muted font-mono text-center md:text-right">
+        Built with ♥ in Melbourne
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Add trigger to show cookie banner
+  const trigger = document.getElementById('footer-cookie-pref-trigger');
+  trigger?.addEventListener('click', () => {
+    const banner = document.getElementById('cookie-consent-banner');
+    if (banner) {
+      banner.style.display = 'block';
+      setTimeout(() => {
+        banner.style.transform = 'translateY(0)';
+        banner.style.opacity = '1';
+      }, 50);
+    }
+  });
+</script>

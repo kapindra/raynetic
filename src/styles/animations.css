@@ -1,0 +1,149 @@
+/* Hero Entrance Staggered Fade-Up */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Scroll Reveal using Intersection Observer */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card Hover Lift & Glow */
+.hover-glow {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.hover-glow:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent);
+}
+
+/* Gradient Border Hover Effect for Service Cards */
+.gradient-border-card {
+  position: relative;
+  border-radius: 16px;
+  background: var(--color-surface);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gradient-border-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 17px;
+  background: linear-gradient(135deg, transparent, transparent);
+  z-index: -1;
+  transition: background 0.4s ease;
+}
+
+.gradient-border-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.gradient-border-card:hover::before {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+}
+
+/* Pulsing CTA Gradient Animation */
+@keyframes pulseGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.cta-gradient-pulse {
+  background: linear-gradient(-45deg, #0A0F1E, #151D35, #7B61FF, #00D4C8);
+  background-size: 400% 400%;
+  animation: pulseGradient 15s ease infinite;
+}
+
+/* Background Dot Grid for Hero */
+.dot-grid {
+  background-image: radial-gradient(rgba(0, 212, 200, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Cursor Glow Dot */
+.cursor-glow-dot {
+  width: 20px;
+  height: 20px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  filter: blur(4px);
+  opacity: 0.8;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}
+
+/* Native Scroll-driven Parallax (Supported Browsers) */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes parallaxMove {
+      from {
+        transform: translateY(40px);
+      }
+      to {
+        transform: translateY(-40px);
+      }
+    }
+
+    .parallax-layer {
+      animation: parallaxMove linear both;
+      animation-timeline: view();
+      animation-range: entry 10% exit 90%;
+    }
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+    transform: none !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

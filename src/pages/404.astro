@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Page Not Found (404) — Raynatic Solutions"
+  description="The requested page could not be found on Raynatic Solutions. It may have gone offline or moved. Use our sitemap to get back on track."
+>
+  
+  <section class="min-h-[80vh] flex items-center justify-center pt-32 pb-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-hero pointer-events-none"></div>
+    <div class="absolute inset-0 dot-grid opacity-20 pointer-events-none"></div>
+
+    <div class="max-w-xl mx-auto px-4 text-center space-y-8 relative z-10">
+      
+      <!-- Glitched 404 Text -->
+      <div class="relative">
+        <h1 class="text-8xl md:text-9xl font-black text-white font-mono tracking-wider select-none relative animate-pulse cursor-default">
+          <span class="glitch-text" data-text="404">404</span>
+        </h1>
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40">
+          <span class="text-7xl md:text-8xl font-mono text-accent-2 blur-sm">404</span>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="space-y-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-white font-display">
+          Looks like this page went offline.
+        </h2>
+        <p class="text-sm text-text-muted leading-relaxed max-w-sm mx-auto">
+          Don't worry &mdash; it happens to the best systems. The link you followed might have expired, or the page has moved.
+        </p>
+      </div>
+
+      <!-- Navigation Suggestions -->
+      <div class="pt-6 border-t border-border space-y-4">
+        <span class="text-xs uppercase tracking-widest text-text-faint font-mono font-bold block">
+          Get Back Online
+        </span>
+        <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
+          <a href="/" class="px-4 py-2 bg-white/5 border border-border hover:border-accent hover:text-accent rounded-xl transition-all">
+            Home Portal
+          </a>
+          <a href="/services" class="px-4 py-2 bg-white/5 border border-border hover:border-accent hover:text-accent rounded-xl transition-all">
+            Our Services
+          </a>
+          <a href="/blog" class="px-4 py-2 bg-white/5 border border-border hover:border-accent hover:text-accent rounded-xl transition-all">
+            Insights Hub
+          </a>
+          <a href="/contact" class="px-4 py-2 bg-white/5 border border-border hover:border-accent hover:text-accent rounded-xl transition-all">
+            Support Desk
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Glitch Text Keyframe Animations */
+  .glitch-text {
+    position: relative;
+  }
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-bg);
+  }
+  .glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 var(--color-accent);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+  }
+  .glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 var(--color-accent-2);
+    clip: rect(85px, 450px, 140px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+  }
+
+  @keyframes glitch-anim {
+    0% {
+      clip: rect(15px, 9999px, 66px, 0);
+    }
+    10% {
+      clip: rect(34px, 9999px, 55px, 0);
+    }
+    20% {
+      clip: rect(85px, 9999px, 5px, 0);
+    }
+    30% {
+      clip: rect(27px, 9999px, 115px, 0);
+    }
+    40% {
+      clip: rect(73px, 9999px, 29px, 0);
+    }
+    55% {
+      clip: rect(98px, 9999px, 60px, 0);
+    }
+    70% {
+      clip: rect(10px, 9999px, 85px, 0);
+    }
+    85% {
+      clip: rect(62px, 9999px, 110px, 0);
+    }
+    100% {
+      clip: rect(12px, 9999px, 45px, 0);
+    }
+  }
+
+  @keyframes glitch-anim2 {
+    0% {
+      clip: rect(65px, 9999px, 12px, 0);
+    }
+    15% {
+      clip: rect(95px, 9999px, 75px, 0);
+    }
+    30% {
+      clip: rect(10px, 9999px, 40px, 0);
+    }
+    45% {
+      clip: rect(80px, 9999px, 130px, 0);
+    }
+    60% {
+      clip: rect(30px, 9999px, 95px, 0);
+    }
+    75% {
+      clip: rect(120px, 9999px, 15px, 0);
+    }
+    90% {
+      clip: rect(50px, 9999px, 110px, 0);
+    }
+    100% {
+      clip: rect(25px, 9999px, 85px, 0);
+    }
+  }
+</style>

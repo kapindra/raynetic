@@ -1,0 +1,178 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  articleDetails?: {
+    publishedTime: string;
+    modifiedTime?: string;
+    author: string;
+    tags?: string[];
+  };
+  serviceDetails?: {
+    name: string;
+    description: string;
+    providerName: string;
+  };
+}
+
+const {
+  title,
+  description,
+  keywords = "IT support Melbourne, managed IT services, cloud migration, software development Australia, cybersecurity consulting",
+  canonicalUrl = Astro.url.href,
+  ogImage = new URL("/assets/og/og-home.jpg", Astro.site || "https://raynatic.com.au").href,
+  articleDetails,
+  serviceDetails
+} = Astro.props;
+
+const formattedTitle = title.includes("Raynatic") ? title : `${title} | Raynatic Solutions`;
+---
+
+<!-- Primary Meta Tags -->
+<title>{formattedTitle}</title>
+<meta name="title" content={formattedTitle} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content="Raynatic Solutions" />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={articleDetails ? "article" : "website"} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={formattedTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content="Raynatic Solutions" />
+<meta property="og:locale" content="en_AU" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={formattedTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Canonical Link -->
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Organization Schema (Loaded on all pages) -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Raynatic Solutions",
+    "url": "https://raynatic.com.au",
+    "logo": "https://raynatic.com.au/assets/images/logo.png",
+    "description": "Premium IT outsourcing, cloud infrastructure migration, managed support, and cybersecurity for ambitious businesses.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Level 12, 120 Collins Street",
+      "addressLocality": "Melbourne",
+      "addressRegion": "VIC",
+      "postalCode": "3000",
+      "addressCountry": "AU"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+61 3 9000 0000",
+      "contactType": "customer service",
+      "availableLanguage": ["English"]
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/raynatic",
+      "https://twitter.com/raynatic",
+      "https://github.com/raynatic"
+    ]
+  }
+</script>
+
+<!-- WebSite Schema -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Raynatic Solutions",
+    "url": "https://raynatic.com.au",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://raynatic.com.au/blog?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script>
+
+<!-- Conditionally inject LocalBusiness Schema on Home and Contact pages -->
+{Astro.url.pathname === "/" || Astro.url.pathname === "/contact" || Astro.url.pathname === "/contact/" ? (
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Raynatic Solutions",
+      "image": "https://raynatic.com.au/assets/images/logo.png",
+      "telephone": "+61 3 9000 0000",
+      "email": "hello@raynatic.com.au",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Level 12, 120 Collins Street",
+        "addressLocality": "Melbourne",
+        "addressRegion": "VIC",
+        "postalCode": "3000",
+        "addressCountry": "AU"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:30"
+        }
+      ],
+      "priceRange": "$$"
+    }
+  </script>
+) : null}
+
+<!-- Conditionally inject Article Schema for Blog posts -->
+{articleDetails ? (
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "image": ogImage,
+    "datePublished": articleDetails.publishedTime,
+    "dateModified": articleDetails.modifiedTime || articleDetails.publishedTime,
+    "author": {
+      "@type": "Person",
+      "name": articleDetails.author
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Raynatic Solutions",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://raynatic.com.au/assets/images/logo.png"
+      }
+    },
+    "description": description
+  })}>
+  </script>
+) : null}
+
+<!-- Conditionally inject Service Schema for Services -->
+{serviceDetails ? (
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": serviceDetails.name,
+    "description": serviceDetails.description,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": serviceDetails.providerName,
+      "url": "https://raynatic.com.au"
+    }
+  })}>
+  </script>
+) : null}

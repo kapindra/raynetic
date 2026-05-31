@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Excerpt (SEO Description)", name: "excerpt", widget: "text"}
+      - {label: "Cover Image", name: "coverImage", widget: "image"}
+      - {label: "Tags", name: "tags", widget: "list", default: ["it-support"]}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
+      - {label: "Body Content", name: "body", widget: "markdown"}
+
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Excerpt (Short Description)", name: "excerpt", widget: "text"}
+      - {label: "SVG Icon Path (Lucide)", name: "icon", widget: "string"}
+      - {label: "Sort Order", name: "order", widget: "number", value_type: "int", default: 0}
+      - {label: "Headline", name: "headline", widget: "string"}
+      - {label: "Key Features (List)", name: "features", widget: "list"}
+      - {label: "Process Flow (List 'Title: Description')", name: "process", widget: "list"}
+      - {label: "FAQs (Question/Answer List)", name: "faqs", widget: "list", fields: [
+          {label: "Question", name: "question", widget: "string"},
+          {label: "Answer", name: "answer", widget: "text"}
+        ]}
+      - {label: "Who It Is For", name: "whoItFor", widget: "text"}
+      - {label: "Detailed Description (Body)", name: "body", widget: "markdown"}

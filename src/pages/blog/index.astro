@@ -1,0 +1,259 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = await getCollection('blog');
+const activePosts = posts
+  .filter(post => !post.data.draft)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+// Identify featured post (latest post)
+const featuredPost = activePosts[0];
+const remainingPosts = activePosts.slice(1);
+
+// Extract distinct categories
+const categories = ['All', ...new Set(activePosts.map(p => p.data.category))];
+---
+
+<BaseLayout 
+  title="Insights & Tech Resources — Raynatic Solutions"
+  description="Explore technical insights, guidelines, and strategy recommendations on managed IT support, cybersecurity, and cloud migration from Raynatic."
+>
+  
+  <!-- Blog Hero -->
+  <section class="relative pt-32 pb-16 border-b border-border">
+    <div class="absolute inset-0 bg-gradient-hero pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10 text-center space-y-6">
+      <nav class="flex items-center justify-center gap-2 text-xs font-mono text-text-muted">
+        <a href="/" class="hover:text-accent">Home</a>
+        <span>/</span>
+        <span class="text-white">Blog</span>
+      </nav>
+      <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight animate-fade-up">
+        Insights & Resources
+      </h1>
+      <p class="text-base sm:text-lg text-text-muted max-w-2xl mx-auto animate-fade-up delay-100">
+        Actionable tech intelligence to optimize and secure your business operations.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter & Search Controls Bar -->
+  <section class="py-10 border-b border-border bg-bg-2">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Category Tabs -->
+      <div class="flex flex-wrap items-center gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0" role="tablist" aria-label="Category Filters">
+        {categories.map((cat, idx) => (
+          <button 
+            type="button"
+            role="tab"
+            aria-selected={idx === 0 ? "true" : "false"}
+            class={`category-tab px-4 py-2 border text-xs font-mono font-bold rounded-xl transition-all cursor-pointer ${idx === 0 ? 'bg-accent text-bg border-accent' : 'border-border text-text-muted hover:text-white hover:border-text-muted'}`}
+            data-category={cat}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Search Input -->
+      <div class="relative w-full md:w-80">
+        <input 
+          type="search" 
+          id="blog-search" 
+          placeholder="Search articles..." 
+          class="w-full pl-10 pr-4 py-3 bg-white/5 border border-border rounded-xl text-xs text-white placeholder-text-faint focus:border-accent focus:outline-none transition-all focus:ring-1 focus:ring-accent"
+          aria-label="Search blog posts"
+        />
+        <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-faint">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-20">
+      
+      <!-- Featured Post (Only visible if searching is empty) -->
+      {featuredPost && (
+        <article id="featured-post-container" class="featured-post-item grid grid-cols-1 lg:grid-cols-12 gap-12 items-center glass-panel border border-border rounded-2xl overflow-hidden p-6 md:p-8 hover-glow reveal" data-title={featuredPost.data.title.toLowerCase()} data-excerpt={featuredPost.data.excerpt.toLowerCase()} data-category={featuredPost.data.category}>
+          <!-- Featured Image -->
+          <div class="lg:col-span-7 rounded-xl overflow-hidden border border-border h-[300px] md:h-[400px]">
+            <img 
+              src={featuredPost.data.coverImage} 
+              alt={featuredPost.data.title}
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
+              fetchpriority="high"
+            />
+          </div>
+          
+          <!-- Featured Info -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent/15 border border-accent/20 rounded text-[10px] font-mono text-accent font-bold uppercase w-fit">
+              Featured Post
+            </div>
+            
+            <div class="space-y-3">
+              <span class="text-xs text-text-muted font-mono block">
+                {new Date(featuredPost.data.date).toLocaleDateString('en-AU', { year: 'numeric', month: 'long', day: 'numeric' })} &bull; {featuredPost.data.readTime}
+              </span>
+              <h2 class="text-2xl md:text-3xl font-bold text-white hover:text-accent transition-colors leading-tight">
+                <a href={`/blog/${featuredPost.id}`}>{featuredPost.data.title}</a>
+              </h2>
+              <p class="text-sm text-text-muted leading-relaxed line-clamp-4">
+                {featuredPost.data.excerpt}
+              </p>
+            </div>
+
+            <div class="pt-6 border-t border-border">
+              <a href={`/blog/${featuredPost.id}`} class="px-5 py-2.5 bg-accent hover:bg-accent/80 text-bg font-sans font-bold text-xs rounded-xl transition-all shadow-glow hover:shadow-hover">
+                Read Article &rarr;
+              </a>
+            </div>
+          </div>
+        </article>
+      )}
+
+      <!-- Blog Posts Grid -->
+      <div class="space-y-6">
+        <h2 id="grid-title" class="text-lg font-bold text-white font-display">Recent Publications</h2>
+        
+        <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {activePosts.map(post => (
+            <article class="post-card glass-panel border border-border rounded-2xl overflow-hidden hover-glow flex flex-col h-full reveal" data-title={post.data.title.toLowerCase()} data-excerpt={post.data.excerpt.toLowerCase()} data-category={post.data.category}>
+              <!-- Thumbnail -->
+              <div class="h-48 overflow-hidden relative border-b border-border">
+                <img 
+                  src={post.data.coverImage} 
+                  alt={post.data.title}
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+                  loading="lazy"
+                />
+                <span class="absolute top-4 left-4 px-2 py-1 bg-bg-2/80 backdrop-blur border border-border text-[10px] font-mono text-accent font-bold rounded">
+                  {post.data.category}
+                </span>
+              </div>
+              
+              <!-- Content -->
+              <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                <div class="space-y-3">
+                  <span class="text-[10px] text-text-muted font-mono block">
+                    {new Date(post.data.date).toLocaleDateString('en-AU', { year: 'numeric', month: 'short', day: 'numeric' })} &bull; {post.data.readTime}
+                  </span>
+                  <h3 class="text-base font-bold text-white leading-tight hover:text-accent transition-colors">
+                    <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                  </h3>
+                  <p class="text-xs text-text-muted line-clamp-3 leading-relaxed">
+                    {post.data.excerpt}
+                  </p>
+                </div>
+                
+                <div class="pt-4 border-t border-border mt-auto">
+                  <a href={`/blog/${post.id}`} class="text-xs font-mono text-accent hover:underline flex items-center gap-1">
+                    Read article &rarr;
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <!-- Zero Results State -->
+        <div id="zero-state" class="hidden text-center py-20 space-y-4">
+          <div class="text-text-faint text-5xl">⚠</div>
+          <h3 class="text-lg font-bold text-white">No articles matched your criteria</h3>
+          <p class="text-sm text-text-muted">Try modifying your search text or choosing a different category filter.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Client side search and category filter scripts -->
+  <script>
+    const searchInput = document.getElementById('blog-search') as HTMLInputElement;
+    const tabs = document.querySelectorAll('.category-tab');
+    const cards = document.querySelectorAll('.post-card');
+    const featuredCard = document.getElementById('featured-post-container');
+    const gridTitle = document.getElementById('grid-title');
+    const zeroState = document.getElementById('zero-state');
+
+    let currentCategory = 'All';
+    let searchQuery = '';
+
+    function filterPosts() {
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const htmlCard = card as HTMLElement;
+        const title = htmlCard.dataset.title || '';
+        const excerpt = htmlCard.dataset.excerpt || '';
+        const cat = htmlCard.dataset.category || '';
+
+        const matchesSearch = title.includes(searchQuery) || excerpt.includes(searchQuery);
+        const matchesCategory = currentCategory === 'All' || cat === currentCategory;
+
+        if (matchesSearch && matchesCategory) {
+          htmlCard.style.display = 'flex';
+          visibleCount++;
+        } else {
+          htmlCard.style.display = 'none';
+        }
+      });
+
+      // Handle Featured Card display logic
+      // We hide featured card if searching or filtering to avoid visual clutter
+      if (featuredCard) {
+        if (searchQuery || currentCategory !== 'All') {
+          featuredCard.style.display = 'none';
+        } else {
+          featuredCard.style.display = 'grid';
+        }
+      }
+
+      // Toggle Zero State
+      if (visibleCount === 0) {
+        zeroState?.classList.remove('hidden');
+        if (gridTitle) gridTitle.style.display = 'none';
+      } else {
+        zeroState?.classList.add('hidden');
+        if (gridTitle) gridTitle.style.display = 'block';
+      }
+    }
+
+    // Search input listener
+    searchInput?.addEventListener('input', (e) => {
+      const target = e.target as HTMLInputElement;
+      searchQuery = target.value.toLowerCase().trim();
+      filterPosts();
+    });
+
+    // Tab buttons listener
+    tabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLButtonElement;
+        
+        // Remove active state
+        tabs.forEach(t => {
+          t.setAttribute('aria-selected', 'false');
+          t.classList.remove('bg-accent', 'text-bg', 'border-accent');
+          t.classList.add('border-border', 'text-text-muted');
+        });
+
+        // Add active state
+        target.setAttribute('aria-selected', 'true');
+        target.classList.add('bg-accent', 'text-bg', 'border-accent');
+        target.classList.remove('border-border', 'text-text-muted');
+
+        currentCategory = target.dataset.category || 'All';
+        filterPosts();
+      });
+    });
+  </script>
+
+</BaseLayout>

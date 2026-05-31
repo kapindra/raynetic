@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout 
+  title="Contact Us — Raynatic Solutions"
+  description="Contact Raynatic Solutions Melbourne headquarters. Send us a message, request an IT infrastructure assessment, or book an emergency SLA support call."
+>
+  
+  <!-- Contact Hero -->
+  <section class="relative pt-32 pb-16 border-b border-border">
+    <div class="absolute inset-0 bg-gradient-hero pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10 text-center space-y-6">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center justify-center gap-2 text-xs font-mono text-text-muted">
+        <a href="/" class="hover:text-accent">Home</a>
+        <span>/</span>
+        <span class="text-white">Contact Us</span>
+      </nav>
+      
+      <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight animate-fade-up">
+        Let's Start a Conversation
+      </h1>
+      <p class="text-base sm:text-lg text-text-muted max-w-2xl mx-auto animate-fade-up delay-100">
+        Get in touch with our senior engineers in Melbourne to request a free, no-obligation cloud costs and security audit.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Body (Two-Column Layout) -->
+  <section class="py-24 border-b border-border">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-16">
+      
+      <!-- Left Column: Form -->
+      <div class="lg:col-span-7 space-y-6 reveal">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-widest text-accent font-mono font-bold">Inquiry Form</span>
+          <h2 class="text-2xl font-bold text-white">Send Us a Message</h2>
+        </div>
+        <ContactForm />
+      </div>
+
+      <!-- Right Column: Contact Info & Maps -->
+      <div class="lg:col-span-5 space-y-8 reveal">
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-widest text-accent font-mono font-bold">Information</span>
+          <h2 class="text-2xl font-bold text-white">Melbourne Head Office</h2>
+        </div>
+
+        <div class="glass-panel border border-border p-6 rounded-2xl space-y-6">
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold font-mono text-text-muted uppercase tracking-wider">Office Address</h3>
+            <p class="text-sm text-text leading-relaxed">
+              Level 12, 120 Collins Street<br />
+              Melbourne VIC 3000, Australia
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold font-mono text-text-muted uppercase tracking-wider">Direct Contacts</h3>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <span class="text-text-muted font-mono block text-xs">General Inquiries:</span>
+                <a href="mailto:hello@raynatic.com.au" class="text-accent hover:underline font-mono">hello@raynatic.com.au</a>
+              </li>
+              <li>
+                <span class="text-text-muted font-mono block text-xs">Helpdesk Phone:</span>
+                <a href="tel:+61390000000" class="text-white hover:text-accent font-mono transition-colors">+61 3 9000 0000</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold font-mono text-text-muted uppercase tracking-wider">Business Support Hours</h3>
+            <p class="text-sm text-text leading-relaxed">
+              Monday - Friday / 9:00 AM - 5:30 PM AEST<br />
+              <span class="text-xs text-text-muted font-mono">* 24/7 Monitoring & Emergency NOC lines are active for SLA contract holders.</span>
+            </p>
+          </div>
+
+          <div class="p-4 border border-accent/20 bg-accent/5 rounded-xl flex items-center gap-3 text-xs text-text">
+            <span class="p-1 bg-accent/20 text-accent rounded-full font-bold">i</span>
+            <span>We promise a response to all business inquiries within 1 business day.</span>
+          </div>
+        </div>
+
+        <!-- Embedded Google Maps (Collins St Melbourne) -->
+        <div class="rounded-2xl overflow-hidden border border-border h-72 shadow-card">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d3151.840289131236!2d144.968603615316!3d-37.81362757975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642b65074bd5d%3A0xea848039d57a915!2s120%20Collins%20St%2C%20Melbourne%20VIC%203000!5e0!3m2!1sen!2sau!4v1685419999999!5m2!1sen!2sau" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Raynatic Melbourne Head Office Google Maps Location"
+          ></iframe>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const cookies = [
+  { category: 'Essential', name: 'raynatic-cookie-consent', purpose: 'Stores cookie consent choices.', duration: '12 months', provider: 'Raynatic Solutions' },
+  { category: 'Essential', name: 'csrf_tok', purpose: 'Protects contact form submissions against cross-site forgery.', duration: 'Session', provider: 'Raynatic Solutions' },
+  { category: 'Analytics', name: '_ga', purpose: 'Aggregates statistics on site visitors and page hits (GA4).', duration: '2 years', provider: 'Google Analytics' },
+  { category: 'Analytics', name: '_ga_XXXX', purpose: 'Tracks individual sessions inside GA4.', duration: '2 years', provider: 'Google Analytics' },
+  { category: 'Functional', name: 'netlify-identity', purpose: 'Manages editorial login sessions for Decap CMS.', duration: 'Persistent', provider: 'Netlify' }
+];
+---
+
+<BaseLayout 
+  title="Cookie Policy — Raynatic Solutions"
+  description="Cookie Policy for Raynatic Solutions. Details the cookies used on our site, their duration, purpose, and how to manage your consent preferences."
+>
+  
+  <section class="relative pt-32 pb-16 border-b border-border">
+    <div class="absolute inset-0 bg-gradient-hero pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 text-center space-y-4 relative z-10">
+      <nav class="flex items-center justify-center gap-2 text-xs font-mono text-text-muted">
+        <a href="/" class="hover:text-accent">Home</a>
+        <span>/</span>
+        <span class="text-white">Cookie Policy</span>
+      </nav>
+      <h1 class="text-3xl md:text-5xl font-bold text-white font-display">
+        Cookie Policy
+      </h1>
+      <p class="text-xs text-text-muted font-mono">
+        Last Updated: 31 May 2026 | Version 1.0
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <div class="glass-panel border border-border rounded-2xl p-8 md:p-12 space-y-8 text-sm text-text-muted leading-relaxed prose prose-invert max-w-none prose-headings:font-display prose-headings:font-bold prose-h2:text-xl prose-h2:text-white prose-h2:mt-8 prose-h2:mb-4 prose-h2:border-b prose-h2:border-border prose-h2:pb-2">
+      
+      <p class="italic">
+        This Cookie Policy describes how Raynatic Solutions uses cookies and similar tracking technologies on our website. It is designed to ensure compliance with the EU ePrivacy Directive (Cookie Law) and the GDPR.
+      </p>
+
+      <h2>1. What Are Cookies?</h2>
+      <p>
+        Cookies are small text files containing numbers and letters that are downloaded onto your device (computer, tablet, or smartphone) when you visit a website. They allow the website to recognize your browser, remember your preferences, and maintain secure sessions.
+      </p>
+
+      <h2>2. How We Use Cookies</h2>
+      <p>
+        We use cookies to secure our contact forms, analyze how users interact with our content, and support our Decap CMS admin dashboard. We separate cookies into three clear categories:
+      </p>
+      <ul>
+        <li><strong>Essential Cookies</strong>: Absolutely necessary for security, form validation, and consent management. These cannot be disabled.</li>
+        <li><strong>Analytics Cookies</strong>: Used to count visits, calculate traffic sources, and identify slow page loads. These are blocked until you opt-in.</li>
+        <li><strong>Marketing Cookies</strong>: Used to measure advertising campaign performance. We do <strong>NOT</strong> currently run any third-party marketing retargeting pixels on our site.</li>
+      </ul>
+
+      <h2>3. Types of Cookies We Use</h2>
+      <div class="overflow-x-auto border border-border rounded-xl">
+        <table class="w-full border-collapse text-left text-xs text-text-muted">
+          <thead>
+            <tr class="bg-white/5 border-b border-border text-white">
+              <th class="p-4 font-mono uppercase tracking-wider">Category</th>
+              <th class="p-4 font-mono uppercase tracking-wider">Name</th>
+              <th class="p-4 font-mono uppercase tracking-wider">Purpose</th>
+              <th class="p-4 font-mono uppercase tracking-wider">Duration</th>
+              <th class="p-4 font-mono uppercase tracking-wider">Provider</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cookies.map(cookie => (
+              <tr class="border-b border-border hover:bg-white/5">
+                <td class="p-4 font-bold text-white">{cookie.category}</td>
+                <td class="p-4 font-mono text-accent">{cookie.name}</td>
+                <td class="p-4">{cookie.purpose}</td>
+                <td class="p-4 font-mono">{cookie.duration}</td>
+                <td class="p-4">{cookie.provider}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>4. How to Control Cookies</h2>
+      <p>
+        You have the right to withdraw your consent to analytical and functional cookies at any time. 
+      </p>
+      <ul>
+        <li>
+          <strong>Our Consent Manager</strong>: You can open our consent settings at any time by clicking the <button id="cookie-pref-trigger-link" class="text-accent hover:underline font-mono cursor-pointer outline-none font-bold">Cookie Preferences</button> button in our footer.
+        </li>
+        <li>
+          <strong>Browser Controls</strong>: You can also manage cookies directly inside your browser settings:
+          <ul>
+            <li><strong>Google Chrome</strong>: Settings &gt; Privacy and Security &gt; Third-party cookies.</li>
+            <li><strong>Apple Safari</strong>: Settings &gt; Privacy &gt; Block all cookies.</li>
+            <li><strong>Mozilla Firefox</strong>: Settings &gt; Privacy &amp; Security &gt; Enhanced Tracking Protection.</li>
+            <li><strong>Microsoft Edge</strong>: Settings &gt; Cookies and site permissions.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>5. Google Analytics Opt-Out</h2>
+      <p>
+        To prevent Google Analytics from tracking your data across all web pages, you can install the official opt-out extension developed by Google: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">tools.google.com/dlpage/gaoptout</a>.
+      </p>
+
+      <h2>6. Changes to This Policy</h2>
+      <p>
+        We may update this policy periodically to reflect changes in our technology or compliance guidelines. Any updates will be published on this page with an adjusted "Last Updated" date.
+      </p>
+
+      <h2>7. Contact Us</h2>
+      <p>
+        For inquiries regarding our use of cookies or details on how we protect your personal data, please contact hello@raynatic.com.au.
+      </p>
+
+      <div class="pt-6 text-center no-print">
+        <button onclick="window.print()" class="px-6 py-2.5 border border-border hover:border-accent text-xs font-mono text-accent rounded-xl transition-all cursor-pointer">
+          Print Cookie Policy
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Bind the page link trigger to display the consent manager
+    const linkTrigger = document.getElementById('cookie-pref-trigger-link');
+    linkTrigger?.addEventListener('click', () => {
+      const banner = document.getElementById('cookie-consent-banner');
+      if (banner) {
+        banner.style.display = 'block';
+        setTimeout(() => {
+          banner.style.transform = 'translateY(0)';
+          banner.style.opacity = '1';
+        }, 50);
+      }
+    });
+  </script>
+
+</BaseLayout>

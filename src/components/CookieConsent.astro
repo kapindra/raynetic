@@ -1,0 +1,202 @@
+---
+---
+
+<div 
+  id="cookie-consent-banner" 
+  class="fixed bottom-6 right-6 left-6 md:left-auto md:w-[480px] z-50 glass-panel p-6 rounded-2xl shadow-card transition-all duration-500 translate-y-10 opacity-0 hidden"
+  role="dialog" 
+  aria-labelledby="cookie-title" 
+  aria-describedby="cookie-desc"
+>
+  <div class="space-y-4">
+    <!-- Icon & Title -->
+    <div class="flex items-center gap-3">
+      <div class="p-2 bg-accent/15 text-accent rounded-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      </div>
+      <h3 id="cookie-title" class="text-base font-bold text-white">Cookie Consent & Privacy</h3>
+    </div>
+
+    <!-- Description -->
+    <p id="cookie-desc" class="text-xs text-text-muted leading-relaxed">
+      We use cookies to optimize performance, analyze website traffic, and ensure a secure browsing experience. By clicking "Accept All", you consent to our use of all cookies. You can manage preferences below or read our <a href="/cookie-policy" class="text-accent hover:underline">Cookie Policy</a>.
+    </p>
+
+    <!-- Detailed Preferences Drawer (Hidden by default) -->
+    <div id="cookie-details" class="hidden border-t border-border pt-4 mt-4 space-y-3">
+      <span class="text-xs font-mono font-bold text-white uppercase tracking-wider block">Preferences</span>
+      
+      <!-- Essential Toggle (disabled & checked) -->
+      <div class="flex items-center justify-between text-xs p-2 bg-white/5 rounded-lg border border-border">
+        <div>
+          <span class="font-bold text-white block">Essential Cookies</span>
+          <span class="text-text-muted">Required for core website security and functions.</span>
+        </div>
+        <input type="checkbox" checked disabled class="accent-accent" />
+      </div>
+
+      <!-- Analytics Toggle -->
+      <div class="flex items-center justify-between text-xs p-2 bg-white/5 rounded-lg border border-border">
+        <div>
+          <span class="font-bold text-white block">Analytics Cookies</span>
+          <span class="text-text-muted">Allows us to analyze visitor behavior to improve features.</span>
+        </div>
+        <input type="checkbox" id="cookie-toggle-analytics" class="accent-accent cursor-pointer w-4 h-4" />
+      </div>
+
+      <!-- Marketing Toggle -->
+      <div class="flex items-center justify-between text-xs p-2 bg-white/5 rounded-lg border border-border">
+        <div>
+          <span class="font-bold text-white block">Marketing Cookies</span>
+          <span class="text-text-muted">Used to deliver ads relevant to your business interests.</span>
+        </div>
+        <input type="checkbox" id="cookie-toggle-marketing" class="accent-accent cursor-pointer w-4 h-4" />
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
+      <button 
+        id="btn-cookie-pref" 
+        class="text-xs text-text-muted hover:text-accent font-mono text-left outline-none cursor-pointer"
+      >
+        Customize Settings...
+      </button>
+
+      <div class="flex items-center gap-2">
+        <button 
+          id="btn-cookie-reject" 
+          class="px-4 py-2 border border-border hover:border-error/50 hover:text-error text-xs rounded-xl font-mono transition-colors outline-none cursor-pointer"
+        >
+          Reject All
+        </button>
+        <button 
+          id="btn-cookie-accept" 
+          class="px-4 py-2 bg-accent hover:bg-accent/80 text-bg text-xs font-bold rounded-xl transition-all shadow-glow cursor-pointer"
+        >
+          Accept All
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Declare gtag types for TypeScript compile safety
+  declare global {
+    interface Window {
+      dataLayer: any[];
+      gtag?: (...args: any[]) => void;
+    }
+  }
+
+  const banner = document.getElementById('cookie-consent-banner');
+  const btnAccept = document.getElementById('btn-cookie-accept');
+  const btnReject = document.getElementById('btn-cookie-reject');
+  const btnPref = document.getElementById('btn-cookie-pref');
+  const details = document.getElementById('cookie-details');
+  
+  const toggleAnalytics = document.getElementById('cookie-toggle-analytics') as HTMLInputElement;
+  const toggleMarketing = document.getElementById('cookie-toggle-marketing') as HTMLInputElement;
+
+  const storageKey = 'raynatic-cookie-consent';
+
+  function initCookieConsent() {
+    const savedConsent = localStorage.getItem(storageKey);
+
+    if (!savedConsent) {
+      // First visit - display the consent banner
+      if (banner) {
+        banner.style.display = 'block';
+        setTimeout(() => {
+          banner.classList.remove('translate-y-10', 'opacity-0');
+        }, 100);
+      }
+    } else {
+      // Consent already logged, apply preferences
+      try {
+        const parsed = JSON.parse(savedConsent);
+        applyAnalyticsConsent(parsed.analytics, parsed.marketing);
+      } catch (e) {
+        localStorage.removeItem(storageKey);
+      }
+    }
+  }
+
+  function saveConsent(analyticsGranted: boolean, marketingGranted: boolean) {
+    const consentRecord = {
+      id: 'rc-' + Math.random().toString(36).substring(2, 11),
+      timestamp: new Date().toISOString(),
+      analytics: analyticsGranted,
+      marketing: marketingGranted
+    };
+
+    localStorage.setItem(storageKey, JSON.stringify(consentRecord));
+    applyAnalyticsConsent(analyticsGranted, marketingGranted);
+    hideBanner();
+  }
+
+  function applyAnalyticsConsent(analytics: boolean, marketing: boolean) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {
+        'analytics_storage': analytics ? 'granted' : 'denied',
+        'ad_storage': marketing ? 'granted' : 'denied'
+      });
+
+      // Push custom event to GTM
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'consent_updated',
+        analytics_consent: analytics,
+        marketing_consent: marketing
+      });
+    }
+  }
+
+  function hideBanner() {
+    if (banner) {
+      banner.classList.add('translate-y-10', 'opacity-0');
+      setTimeout(() => {
+        banner.style.display = 'none';
+      }, 500);
+    }
+  }
+
+  btnAccept?.addEventListener('click', () => {
+    saveConsent(true, true);
+  });
+
+  btnReject?.addEventListener('click', () => {
+    saveConsent(false, false);
+  });
+
+  // Handle detailed customization drawer
+  let prefDrawerOpen = false;
+  btnPref?.addEventListener('click', () => {
+    prefDrawerOpen = !prefDrawerOpen;
+    if (prefDrawerOpen) {
+      details?.classList.remove('hidden');
+      btnPref.textContent = 'Save My Preferences';
+      // Set toggles to current values
+      const saved = localStorage.getItem(storageKey);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (toggleAnalytics) toggleAnalytics.checked = parsed.analytics;
+        if (toggleMarketing) toggleMarketing.checked = parsed.marketing;
+      }
+    } else {
+      // Save current custom toggle inputs
+      const analytics = toggleAnalytics?.checked || false;
+      const marketing = toggleMarketing?.checked || false;
+      saveConsent(analytics, marketing);
+    }
+  });
+
+  // Run on client load
+  document.addEventListener('DOMContentLoaded', initCookieConsent);
+  // Also run immediately since DOMContentLoaded might have already fired in some Astro hydrations
+  initCookieConsent();
+</script>

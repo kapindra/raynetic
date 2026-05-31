@@ -1,0 +1,175 @@
+---
+import '@fontsource/syne';
+import '@fontsource/dm-sans';
+import '../styles/global.css';
+import '../styles/animations.css';
+
+import SEO from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  articleDetails?: {
+    publishedTime: string;
+    modifiedTime?: string;
+    author: string;
+    tags?: string[];
+  };
+  serviceDetails?: {
+    name: string;
+    description: string;
+    providerName: string;
+  };
+}
+
+const {
+  title,
+  description,
+  keywords,
+  canonicalUrl,
+  ogImage,
+  articleDetails,
+  serviceDetails
+} = Astro.props;
+
+// Use environment variables or placeholders
+const gaId = import.meta.env.PUBLIC_GA_ID || "G-XXXXXXXXXX";
+const gtmId = import.meta.env.PUBLIC_GTM_ID || "GTM-XXXXXXX";
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Favicon & Web App Standards -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0A0F1E" />
+
+    <!-- SEO Component -->
+    <SEO
+      title={title}
+      description={description}
+      keywords={keywords}
+      canonicalUrl={canonicalUrl}
+      ogImage={ogImage}
+      articleDetails={articleDetails}
+      serviceDetails={serviceDetails}
+    />
+
+    <!-- Google Tag Manager (Consent-Gated Initial Setup) -->
+    <script is:inline set:html={`
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','${gtmId}');
+    `} />
+
+    <!-- Google Analytics 4 (Consent-Gated Default Denied) -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+    <script is:inline set:html={`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      // Default privacy rules (GDPR)
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'wait_for_update': 500
+      });
+      
+      gtag('config', '${gaId}', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure',
+        'send_page_view': true
+      });
+    `} />
+  </head>
+  <body class="bg-bg text-text antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Accessible Skip Navigation Link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 focus:bg-accent focus:text-bg focus:font-bold focus:rounded-md focus:border-2 focus:border-white focus:outline-none">
+      Skip to main content
+    </a>
+
+    <!-- Custom Cursor Glow Dot (Hides on touch devices) -->
+    <div id="cursor-glow" class="cursor-glow-dot hidden lg:block" aria-hidden="true"></div>
+
+    <Header />
+
+    <main id="main-content" tabindex="-1" class="outline-none">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <CookieConsent />
+
+    <!-- Animations, Parallax & Interactivity Client Scripts -->
+    <script>
+      // Intersection Observer Scroll Reveals
+      const revealElements = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      revealElements.forEach((el) => revealObserver.observe(el));
+
+      // Custom Cursor Follower
+      const cursor = document.getElementById('cursor-glow');
+      if (cursor && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+        document.addEventListener('mousemove', (e) => {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+        });
+
+        // Click animations or hovering effect changes
+        document.querySelectorAll('a, button, select, input, textarea').forEach(el => {
+          el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            cursor.style.background = 'var(--color-accent-2)';
+          });
+          el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursor.style.background = 'var(--color-accent)';
+          });
+        });
+      }
+
+      // Parallax Observer Fallback for Unsupported browsers
+      if (!CSS.supports('(animation-timeline: view()) and (animation-range: entry)')) {
+        const parallaxEls = document.querySelectorAll('[data-parallax]');
+        window.addEventListener('scroll', () => {
+          const scrollY = window.scrollY;
+          parallaxEls.forEach((el) => {
+            const htmlEl = el as HTMLElement;
+            const speed = parseFloat(htmlEl.dataset.parallax || '0.2');
+            htmlEl.style.transform = `translateY(${scrollY * speed}px)`;
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

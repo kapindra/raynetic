@@ -1,0 +1,217 @@
+---
+const currentPath = Astro.url.pathname;
+const cleanPath = currentPath.endsWith('/') && currentPath.length > 1 ? currentPath.slice(0, -1) : currentPath;
+
+const navItems = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+  { name: 'Blog', path: '/blog' },
+  { name: 'Contact', path: '/contact' }
+];
+
+const services = [
+  { name: 'Software Development', slug: 'software-development', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
+  { name: 'Cloud & DevOps', slug: 'cloud-devops', icon: 'M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z' },
+  { name: 'Managed IT Support', slug: 'managed-it-support', icon: 'M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z' },
+  { name: 'Cybersecurity Services', slug: 'cybersecurity', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' }
+];
+---
+
+<header id="site-header" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 py-6">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
+    
+    <!-- Logo SVG -->
+    <a href="/" class="flex items-center gap-2 group outline-none focus:ring-2 focus:ring-accent rounded-lg" aria-label="Raynatic Solutions Home">
+      <svg class="w-8 h-8 text-accent transition-transform duration-300 group-hover:rotate-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 15L15 45L25 55L50 35L75 55L85 45L50 15Z" fill="currentColor"/>
+        <path d="M50 40L25 65L35 75L50 60L65 75L75 65L50 40Z" fill="var(--color-accent-2)"/>
+        <circle cx="50" cy="80" r="8" fill="currentColor"/>
+      </svg>
+      <span class="text-xl font-bold font-display tracking-tight text-white">
+        Raynatic<span class="text-accent">.</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-8" aria-label="Main Navigation">
+      <ul class="flex items-center gap-8">
+        <li>
+          <a href="/" class={`text-sm font-mono transition-colors hover:text-accent ${cleanPath === '/' ? 'text-accent' : 'text-text-muted'}`}>
+            Home
+          </a>
+        </li>
+        
+        <!-- Services Mega Menu Trigger -->
+        <li class="relative group">
+          <button 
+            type="button" 
+            class={`flex items-center gap-1 text-sm font-mono transition-colors hover:text-accent outline-none focus:text-accent ${cleanPath.startsWith('/services') ? 'text-accent' : 'text-text-muted'}`}
+            aria-expanded="false"
+            aria-haspopup="true"
+          >
+            Services
+            <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <!-- Services Dropdown Mega Menu -->
+          <div class="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:pointer-events-auto transition-all duration-300 w-[450px]">
+            <div class="glass-panel rounded-2xl p-6 shadow-card grid grid-cols-1 gap-4">
+              <div class="pb-2 border-b border-border">
+                <span class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">Our IT Core Expertise</span>
+              </div>
+              {services.map(service => (
+                <a 
+                  href={`/services/${service.slug}`} 
+                  class="flex items-start gap-4 p-3 hover:bg-white/5 rounded-xl transition-all duration-200 group/item"
+                >
+                  <div class="p-2 bg-accent/10 text-accent rounded-lg group-hover/item:bg-accent group-hover/item:text-bg transition-colors duration-200">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d={service.icon} />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-white group-hover/item:text-accent transition-colors">{service.name}</h4>
+                    <p class="text-xs text-text-muted mt-1">Enterprise-grade {service.name.toLowerCase()} capabilities.</p>
+                  </div>
+                </a>
+              ))}
+              <div class="pt-2 border-t border-border flex justify-end">
+                <a href="/services" class="text-xs font-mono text-accent hover:underline flex items-center gap-1">
+                  View All Services →
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        {navItems.slice(1).map(item => (
+          <li>
+            <a 
+              href={item.path} 
+              class={`text-sm font-mono transition-colors hover:text-accent ${cleanPath === item.path ? 'text-accent' : 'text-text-muted'}`}
+            >
+              {item.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Header CTA -->
+    <div class="hidden lg:flex items-center gap-4">
+      <a href="/contact" class="px-5 py-2.5 bg-accent hover:bg-accent/80 text-bg font-sans font-bold text-sm rounded-full transition-all duration-300 shadow-glow hover:shadow-hover">
+        Get a Quote
+      </a>
+    </div>
+
+    <!-- Mobile Navigation Toggle -->
+    <button 
+      id="mobile-nav-toggle"
+      type="button" 
+      class="lg:hidden p-2 text-text hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent rounded-lg"
+      aria-label="Toggle Mobile Menu"
+      aria-expanded="false"
+      aria-controls="mobile-overlay"
+    >
+      <svg id="hamburger-icon" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+      <svg id="close-icon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Overlay Menu -->
+  <div 
+    id="mobile-overlay" 
+    class="fixed inset-0 top-[80px] bg-bg/95 backdrop-blur-xl z-30 opacity-0 pointer-events-none lg:hidden transition-all duration-300"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile Navigation Drawer"
+  >
+    <div class="h-full px-6 py-12 flex flex-col justify-between">
+      <nav class="space-y-8" aria-label="Mobile Navigation Link List">
+        <ul class="space-y-6">
+          <li>
+            <a href="/" class="mobile-link text-2xl font-display font-bold text-white block">Home</a>
+          </li>
+          <li>
+            <div class="mobile-link text-2xl font-display font-bold text-white mb-4 block">Services</div>
+            <ul class="pl-4 space-y-4 border-l border-border">
+              {services.map(service => (
+                <li>
+                  <a href={`/services/${service.slug}`} class="text-sm font-mono text-text-muted hover:text-accent block">{service.name}</a>
+                </li>
+              ))}
+              <li>
+                <a href="/services" class="text-xs font-mono text-accent hover:underline block">All Services →</a>
+              </li>
+            </ul>
+          </li>
+          {navItems.slice(1).map(item => (
+            <li>
+              <a href={item.path} class="mobile-link text-2xl font-display font-bold text-white block">{item.name}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="space-y-6 pb-20">
+        <a href="/contact" class="w-full text-center block py-4 bg-accent text-bg font-sans font-bold rounded-xl transition-all shadow-glow">
+          Get a Quote
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('mobile-nav-toggle');
+  const overlay = document.getElementById('mobile-overlay');
+  const hamburger = document.getElementById('hamburger-icon');
+  const close = document.getElementById('close-icon');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  // Change header appearance on scroll
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('glass-nav', 'py-4');
+      header?.classList.remove('py-6');
+    } else {
+      header?.classList.remove('glass-nav', 'py-4');
+      header?.classList.add('py-6');
+    }
+  });
+
+  // Toggle mobile navigation
+  let isOpen = false;
+  function toggleMenu() {
+    isOpen = !isOpen;
+    toggle?.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    
+    if (isOpen) {
+      overlay?.classList.remove('opacity-0', 'pointer-events-none');
+      hamburger?.classList.add('hidden');
+      close?.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    } else {
+      overlay?.classList.add('opacity-0', 'pointer-events-none');
+      hamburger?.classList.remove('hidden');
+      close?.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }
+
+  toggle?.addEventListener('click', toggleMenu);
+  
+  // Close menu when clicking links
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (isOpen) toggleMenu();
+    });
+  });
+</script>

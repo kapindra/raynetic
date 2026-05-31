@@ -1,0 +1,453 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = await getCollection('services');
+const sortedServices = services.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const blogPosts = await getCollection('blog');
+const latestPosts = blogPosts
+  .filter(post => !post.data.draft)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+
+const stats = [
+  { value: 250, suffix: '+', label: 'Projects Delivered' },
+  { value: 98, suffix: '%', label: 'Client Retention' },
+  { value: 15, suffix: '+', label: 'Countries Served' },
+  { value: 24, suffix: '/7', label: 'Support Coverage' }
+];
+
+const processSteps = [
+  { num: '01', title: 'Discovery Call', desc: 'We analyze your current systems, pain points, and business growth objectives.' },
+  { num: '02', title: 'Proposal & SLA', desc: 'We present a custom flat-rate scope of work with strict SLA response guarantees.' },
+  { num: '03', title: 'Onboarding', desc: 'We deploy secure monitoring agents and fully document your technical environment.' },
+  { num: '04', title: 'Ongoing Support', desc: 'Our NOC and engineers proactively manage, secure, and scale your systems.' }
+];
+
+const testimonials = [
+  {
+    quote: "Raynatic transformed our infrastructure. Their proactive management resolved network drops that plagued us for years. The flat-rate model is transparent, and support calls are resolved within minutes.",
+    author: "Sarah Jenkins",
+    role: "Chief Operations Officer",
+    company: "Vanguard Legal Group",
+    rating: 5
+  },
+  {
+    quote: "Our cloud migration was a massive project. Raynatic scaffolded the entire setup via Terraform, optimized our databases, and managed the cutover with absolute zero downtime. Invaluable partners.",
+    author: "David Chen",
+    role: "VP of Engineering",
+    company: "Karta Tech Labs",
+    rating: 5
+  },
+  {
+    quote: "Managing cybersecurity compliance seemed daunting for our medical practice. Raynatic aligned our infrastructure to the Essential Eight framework, audited our endpoints, and trained our staff. Invaluable.",
+    author: "Dr. Elena Rostova",
+    role: "Director",
+    company: "Melbourne Care Clinics",
+    rating: 5
+  }
+];
+
+const partners = [
+  { name: 'Microsoft Partner', path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z' },
+  { name: 'AWS Certified', path: 'M12 2L2 22h20L12 2zm0 3.3L19.7 19H4.3L12 5.3z' },
+  { name: 'ISO 27001 Security', path: 'M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z' },
+  { name: 'Essential Eight', path: 'M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm-1-15h2v6h-2V7zm0 8h2v2h-2v-2z' }
+];
+---
+
+<BaseLayout 
+  title="Raynatic Solutions — Where Technology Meets Results"
+  description="Premium IT outsourcing, cloud infrastructure migration, managed support, and cybersecurity audits for ambitious businesses in Melbourne and globally."
+>
+  
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+    <!-- Animated background mesh -->
+    <div class="absolute inset-0 bg-gradient-hero pointer-events-none"></div>
+    <div class="absolute inset-0 dot-grid opacity-30 pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 md:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+      <!-- Hero Left Text -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 border border-accent/20 rounded-full text-xs text-accent font-mono animate-fade-up">
+          <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+          IT Outsourcing & Managed Services Partner
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight animate-fade-up delay-100">
+          Where Technology<br />
+          Meets <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-2">Results</span>.
+        </h1>
+        <p class="text-base sm:text-lg text-text-muted max-w-xl animate-fade-up delay-200">
+          We design, build, and proactively secure the mission-critical cloud and network infrastructure that drives growth for ambitious mid-market enterprises across Australia.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-up delay-300">
+          <a href="/contact" class="px-8 py-4 bg-accent hover:bg-accent/80 text-bg font-sans font-bold rounded-xl transition-all shadow-glow hover:shadow-hover text-center">
+            Get a Free Consultation &rarr;
+          </a>
+          <a href="#services" class="px-8 py-4 border border-border hover:border-accent/40 text-white font-sans font-semibold rounded-xl transition-all text-center">
+            Explore Services &darr;
+          </a>
+        </div>
+      </div>
+      
+      <!-- Hero Right Graphics -->
+      <div class="lg:col-span-5 relative hidden lg:block animate-fade-up delay-300" data-parallax="0.1">
+        <div class="w-[450px] h-[450px] glass-panel rounded-full border border-border flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-radial-gradient from-accent-2/10 to-transparent"></div>
+          
+          <!-- Animated Ring -->
+          <div class="w-80 h-80 border border-accent/30 rounded-full animate-spin [animation-duration:15s] flex items-center justify-center">
+            <div class="w-3 h-3 bg-accent rounded-full -translate-y-[160px]"></div>
+          </div>
+          
+          <!-- Inner Core SVG Graphic -->
+          <svg class="w-40 h-40 text-accent/80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="25" y="25" width="50" height="50" rx="12" stroke="currentColor" stroke-width="2" class="animate-pulse"/>
+            <circle cx="50" cy="50" r="10" fill="var(--color-accent-2)"/>
+            <path d="M15 50h20M65 50h20M50 15v20M50 65v20" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated Chevron Cue -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-70">
+      <span class="text-[10px] font-mono tracking-widest text-text-muted uppercase">Scroll</span>
+      <svg class="w-4 h-4 text-accent animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Section 2: Trust Marquee -->
+  <section class="py-12 border-t border-b border-border bg-bg-2 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <p class="text-center text-xs uppercase tracking-widest text-text-faint font-mono font-bold mb-8">
+        Aligned with Industry Standards & Top Platforms
+      </p>
+      
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+        {partners.map(partner => (
+          <div class="flex items-center gap-3 text-text-muted hover:text-accent transition-colors cursor-pointer group">
+            <svg class="w-6 h-6 stroke-current text-text-faint group-hover:text-accent transition-colors" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={partner.path} />
+            </svg>
+            <span class="text-sm font-mono font-bold">{partner.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Services Overview -->
+  <section id="services" class="py-24 border-b border-border scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      
+      <!-- Section Header -->
+      <div class="max-w-3xl mb-16 space-y-4 reveal">
+        <span class="text-xs uppercase tracking-widest text-accent font-mono font-bold">What We Do</span>
+        <h2 class="text-3xl md:text-5xl font-bold text-white">End-to-End IT Solutions</h2>
+        <p class="text-text-muted">
+          From custom software development to compliance auditing and proactive daily IT support, we provide the enterprise infrastructure and strategies required to accelerate business growth.
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {sortedServices.map(service => (
+          <div class="gradient-border-card p-8 border border-border flex flex-col justify-between h-full hover-glow reveal">
+            <div class="space-y-6">
+              <div class="p-3 bg-accent/10 text-accent rounded-xl w-fit">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={service.data.icon} />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-white">{service.data.title}</h3>
+              <p class="text-sm text-text-muted">{service.data.excerpt}</p>
+            </div>
+            <div class="pt-8">
+              <a href={`/services/${service.id}`} class="text-sm font-mono text-accent hover:underline flex items-center gap-1">
+                Learn more &rarr;
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Stats Counter -->
+  <section class="py-20 bg-bg-2 border-b border-border">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        {stats.map(stat => (
+          <div class="space-y-2 reveal">
+            <div class="text-4xl sm:text-5xl font-bold text-white font-mono flex items-center justify-center">
+              <span class="counter-number" data-target={stat.value}>0</span>{stat.suffix}
+            </div>
+            <p class="text-xs sm:text-sm text-text-muted font-mono uppercase tracking-wider">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Why Choose Us (USP) -->
+  <section class="py-24 border-b border-border">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      
+      <!-- USP Left Text -->
+      <div class="lg:col-span-6 space-y-6 reveal">
+        <span class="text-xs uppercase tracking-widest text-accent font-mono font-bold">Why Choose Us</span>
+        <h2 class="text-3xl md:text-5xl font-bold text-white">The Raynatic Solutions Difference</h2>
+        <p class="text-text-muted">
+          Unlike generic "break-fix" consulting firms, we act as a strategic expansion of your team, providing predictable flat-rate pricing models and 24/7 SLA responsiveness.
+        </p>
+
+        <div class="space-y-4 pt-4">
+          <div class="flex items-start gap-4">
+            <div class="p-1 bg-accent/20 text-accent rounded-full mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-white">Predictable Flat-Rate Pricing</h4>
+              <p class="text-sm text-text-muted mt-1">No surprise hourly consulting rates. You pay one clean, monthly subscription priced per employee or device.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="p-1 bg-accent/20 text-accent rounded-full mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-white">Dedicated Melbourne Account Managers</h4>
+              <p class="text-sm text-text-muted mt-1">Direct contact numbers to engineers who understand your network, bypassing generic automated call routing bots.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="p-1 bg-accent/20 text-accent rounded-full mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-white">Guaranteed 24/7 Support SLA</h4>
+              <p class="text-sm text-text-muted mt-1">Critical incident monitoring with 15-minute SLA dispatch response times, ensuring absolute system availability.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- USP Right Graphic -->
+      <div class="lg:col-span-6 relative hidden lg:block reveal">
+        <div class="glass-panel border border-border p-8 rounded-2xl relative shadow-card">
+          <div class="absolute -top-4 -right-4 w-12 h-12 bg-accent-2/20 border border-accent-2 rounded-xl flex items-center justify-center text-accent-2 text-xl font-bold font-mono">
+            USP
+          </div>
+          <div class="space-y-6">
+            <div class="text-accent font-mono text-sm">System Status: SECURED</div>
+            <div class="h-2 w-full bg-border rounded-full overflow-hidden">
+              <div class="h-full w-full bg-accent rounded-full animate-[pulse_3s_infinite]"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+              <div class="p-4 bg-white/5 border border-border rounded-xl text-center">
+                <span class="text-xs text-text-muted font-mono block">Uptime SLA</span>
+                <span class="text-xl font-bold text-white mt-1 block">99.99%</span>
+              </div>
+              <div class="p-4 bg-white/5 border border-border rounded-xl text-center">
+                <span class="text-xs text-text-muted font-mono block">Response Time</span>
+                <span class="text-xl font-bold text-accent mt-1 block">&lt; 15 Min</span>
+              </div>
+            </div>
+            
+            <div class="p-4 border border-border rounded-xl text-xs text-text-muted bg-bg flex items-center gap-3">
+              <span class="flex h-3 w-3 relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-success"></span>
+              </span>
+              <span>Proactive network threat monitoring system active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 6: Process / How It Works -->
+  <section class="py-24 border-b border-border bg-bg-2">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-4 reveal">
+        <span class="text-xs uppercase tracking-widest text-accent font-mono font-bold">Execution Plan</span>
+        <h2 class="text-3xl md:text-5xl font-bold text-white">How We Work</h2>
+        <p class="text-text-muted">A structured onboarding process designed for zero business disruption.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+        {processSteps.map((step, idx) => (
+          <div class="relative glass-panel border border-border p-6 rounded-2xl flex flex-col justify-between h-full reveal">
+            <div class="space-y-4">
+              <span class="text-3xl font-bold font-mono text-accent-2 block">{step.num}</span>
+              <h3 class="text-lg font-bold text-white">{step.title}</h3>
+              <p class="text-xs text-text-muted leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Testimonials ( snap carousel ) -->
+  <section class="py-24 border-b border-border overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      
+      <div class="mb-16 space-y-4 reveal">
+        <span class="text-xs uppercase tracking-widest text-accent font-mono font-bold">Social Proof</span>
+        <h2 class="text-3xl md:text-5xl font-bold text-white">What Our Clients Say</h2>
+      </div>
+
+      <!-- Testimonial Slider Snap -->
+      <div class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-8 no-scrollbar">
+        {testimonials.map(item => (
+          <div class="flex-none w-full md:w-[600px] snap-center glass-panel border border-border p-8 md:p-10 rounded-2xl flex flex-col justify-between relative">
+            <p class="text-base text-text italic mb-8 leading-relaxed">
+              "{item.quote}"
+            </p>
+            <div class="flex items-center justify-between border-t border-border pt-6 mt-auto">
+              <div>
+                <h4 class="text-sm font-bold text-white">{item.author}</h4>
+                <p class="text-xs text-text-muted font-mono mt-1">{item.role}, {item.company}</p>
+              </div>
+              <div class="flex text-accent gap-1 text-sm">
+                {"★".repeat(item.rating)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: Latest Blog Posts -->
+  <section class="py-24 border-b border-border bg-bg-2">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
+        <div class="space-y-4 max-w-2xl">
+          <span class="text-xs uppercase tracking-widest text-accent font-mono font-bold">Insights</span>
+          <h2 class="text-3xl md:text-5xl font-bold text-white">Company Resource Hub</h2>
+          <p class="text-text-muted">Stay updated with actionable insights on IT downtime, cybersecurity auditing, and cloud infrastructure strategy.</p>
+        </div>
+        <a href="/blog" class="px-6 py-3 border border-border hover:border-accent/40 text-sm font-mono text-accent hover:underline rounded-xl transition-all h-fit whitespace-nowrap">
+          View All Articles &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {latestPosts.map(post => (
+          <article class="glass-panel border border-border rounded-2xl overflow-hidden hover-glow flex flex-col h-full reveal">
+            <div class="h-48 overflow-hidden relative border-b border-border">
+              <img 
+                src={post.data.coverImage} 
+                alt={post.data.title}
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                loading="lazy"
+              />
+              <span class="absolute top-4 left-4 px-2 py-1 bg-bg-2/80 backdrop-blur border border-border text-[10px] font-mono text-accent font-bold rounded">
+                {post.data.category}
+              </span>
+            </div>
+            <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+              <div class="space-y-3">
+                <span class="text-[10px] text-text-muted font-mono block">
+                  {new Date(post.data.date).toLocaleDateString('en-AU', { year: 'numeric', month: 'short', day: 'numeric' })} &bull; {post.data.readTime}
+                </span>
+                <h3 class="text-base font-bold text-white leading-tight hover:text-accent transition-colors">
+                  <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                </h3>
+                <p class="text-xs text-text-muted line-clamp-3 leading-relaxed">
+                  {post.data.excerpt}
+                </p>
+              </div>
+              <div class="pt-4 border-t border-border mt-auto">
+                <a href={`/blog/${post.id}`} class="text-xs font-mono text-accent hover:underline flex items-center gap-1">
+                  Read post &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 9: CTA Banner -->
+  <section class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 cta-gradient-pulse opacity-40 z-0"></div>
+    <div class="max-w-5xl mx-auto px-4 md:px-8 text-center relative z-10 space-y-8 reveal">
+      <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight">
+        Ready to Proactively Secure and Scale Your IT Operations?
+      </h2>
+      <p class="text-base text-text-muted max-w-xl mx-auto">
+        Speak directly with one of our senior systems architects in Melbourne today. Get a free, no-obligation technical audit and infrastructure consultation.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="px-8 py-4 bg-accent hover:bg-accent/80 text-bg font-sans font-bold rounded-xl transition-all shadow-glow hover:shadow-hover">
+          Book a Free Call &rarr;
+        </a>
+        <a href="/about" class="px-8 py-4 border border-border hover:border-accent/40 text-white font-sans font-semibold rounded-xl transition-all">
+          Learn More About Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script for Count-up stats animation -->
+  <script>
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px'
+    };
+
+    const countUpObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const numberEl = entry.target.querySelector('.counter-number');
+          if (numberEl) {
+            const target = parseInt(numberEl.getAttribute('data-target') || '0', 10);
+            let count = 0;
+            const duration = 1500; // 1.5 seconds
+            const steps = 30;
+            const stepTime = duration / steps;
+            const increment = target / steps;
+            
+            const timer = setInterval(() => {
+              count += increment;
+              if (count >= target) {
+                numberEl.textContent = target.toString();
+                clearInterval(timer);
+              } else {
+                numberEl.textContent = Math.floor(count).toString();
+              }
+            }, stepTime);
+          }
+          // Unobserve after running
+          countUpObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.counter-number').forEach(num => {
+      const parent = num.closest('.reveal');
+      if (parent) countUpObserver.observe(parent);
+    });
+  </script>
+
+</BaseLayout>

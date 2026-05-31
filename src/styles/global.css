@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #0A0F1E;
+  --color-bg-2: #0F1729;
+  --color-surface: #151D35;
+  --color-border: #1E2A45;
+  --color-accent: #00D4C8;
+  --color-accent-2: #7B61FF;
+  --color-accent-warm: #FF6B35;
+  --color-text: #E8EDF7;
+  --color-text-muted: #8892A4;
+  --color-text-faint: #3D4E6B;
+  
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.3);
+  --shadow-glow: 0 0 40px rgba(0,212,200,0.15);
+  --shadow-hover: 0 0 60px rgba(0,212,200,0.25), 0 16px 48px rgba(0,0,0,0.4);
+}
+
+@theme {
+  --color-bg: var(--color-bg);
+  --color-bg-2: var(--color-bg-2);
+  --color-surface: var(--color-surface);
+  --color-border-custom: var(--color-border);
+  --color-accent: var(--color-accent);
+  --color-accent-2: var(--color-accent-2);
+  --color-accent-warm: var(--color-accent-warm);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-faint: var(--color-text-faint);
+
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+
+  --font-display: "Syne", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Global Reset & Base Elements */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(21, 29, 53, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border);
+}
+
+.glass-nav {
+  background: rgba(10, 15, 30, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Responsive Image Layout Fixes */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Print Stylesheet */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+}
