@@ -2,37 +2,37 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const values = [
-  { name: 'Integrity First', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', desc: 'We maintain absolute transparency. We do not lock clients into complex proprietary contracts and provide clear, flat-rate pricing details.' },
-  { name: 'Continuous Innovation', icon: 'M13 10V3L4 14h7v7l9-11h-7z', desc: 'We proactively adopt next-generation public cloud, automation tools, and security standards to keep our clients ahead of operational curves.' },
-  { name: 'SLA Accountability', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', desc: 'Uptime is our core metric. We measure our success on resolution speed and proactivity, backed by strict financial SLA commitments.' },
-  { name: 'Genuine Partnership', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z', desc: 'We act as an integrated extension of your business operations. Your dedicated account manager ensures regular strategic alignment.' }
+  { name: 'Integrity First', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', desc: 'We maintain absolute transparency. We do not lock clients into complex proprietary contracts and provide clear, value-driven pricing scopes.' },
+  { name: 'Continuous Innovation', icon: 'M13 10V3L4 14h7v7l9-11h-7z', desc: 'We proactively adopt next-generation headless architectures, app engineering tools, and marketing standards to keep our clients ahead of the curve.' },
+  { name: 'Measurable Outcomes', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', desc: 'Growth is our core metric. We measure our success on campaign performance, organic search visibility, and visual customer engagement.' },
+  { name: 'Genuine Partnership', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z', desc: 'We act as an integrated extension of your business. Your dedicated account manager ensures regular strategic alignment across all campaigns.' }
 ];
 
 const team = [
   { name: 'Marcus Rayn', title: 'Managing Director & Founder', initials: 'MR' },
-  { name: 'Elena Rostova', title: 'VP of Engineering', initials: 'ER' },
-  { name: 'Thomas Vance', title: 'Director of Security Operations', initials: 'TV' },
-  { name: 'Sarah Jenkins', title: 'Client Operations Lead', initials: 'SJ' }
+  { name: 'Elena Rostova', title: 'Director of UI/UX Design', initials: 'ER' },
+  { name: 'Thomas Vance', title: 'Head of Digital Strategy', initials: 'TV' },
+  { name: 'Sarah Jenkins', title: 'Lead Web Developer', initials: 'SJ' }
 ];
 
 const timeline = [
-  { year: '2018', title: 'Raynatic Solutions Founded', desc: 'Established in Melbourne with a mission to deliver transparent, flat-rate IT services for mid-market firms.' },
-  { year: '2020', title: 'First 50 Managed Clients', desc: 'Expanded our operations team and built our proactive Network Operations Center (NOC) in Collins Street.' },
-  { year: '2022', title: 'Cloud Automation Launch', desc: 'Integrated automated DevOps, containerization, and Infrastructure as Code into our default service stack.' },
-  { year: '2024', title: 'ISO 27001 Compliance', desc: 'Formally aligned our entire organization and helpdesk infrastructure to certified international security standards.' }
+  { year: '2018', title: 'Raynetic Solutions Founded', desc: 'Established in Melbourne with a mission to deliver high-converting web applications and design solutions.' },
+  { year: '2020', title: 'First 50 Active Brands', desc: 'Expanded our operations team to include digital strategy and targeted marketing solutions.' },
+  { year: '2022', title: 'Interactive Web & Design Launch', desc: 'Integrated headless WordPress CMS structures and Flutter app development into our default stack.' },
+  { year: '2024', title: 'National Design Recognition', desc: 'Named one of Melbourne’s premium visual design and organic SEO growth agencies.' }
 ];
 
 const awards = [
-  { name: 'Microsoft Gold Partner', desc: 'Cloud Platform Specialization' },
-  { name: 'AWS Advanced Partner', desc: 'DevOps & Migration Specialization' },
-  { name: 'ISO 27001 Certified', desc: 'Information Security Management' },
-  { name: 'ACSC Essential Eight', desc: 'Maturity Level 3 Alignment' }
+  { name: 'Google Premier Partner', desc: 'Search & Paid Ads Specialization' },
+  { name: 'Awwwards Nominee', desc: 'Web Design & UX Excellence' },
+  { name: 'Figma Verified Creator', desc: 'Design System Specialization' },
+  { name: 'WordPress Core Contributor', desc: 'Headless CMS Development' }
 ];
 ---
 
 <BaseLayout 
-  title="About Us — Raynatic Solutions"
-  description="Discover the history, values, team, and security compliance records that make Raynatic Solutions the preferred IT outsourcing partner in Melbourne."
+  title="About Us — Raynetic Solutions"
+  description="Discover the history, values, team, and creative track record that make Raynetic Solutions a preferred digital design, development, and marketing agency in Melbourne."
 >
   
   <!-- About Hero -->
@@ -48,10 +48,10 @@ const awards = [
       </nav>
       
       <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
-        About Raynatic Solutions
+        About Raynetic Solutions
       </h1>
       <p class="text-base sm:text-lg text-text-muted max-w-2xl mx-auto">
-        Building high-performance, secure digital foundations for Australian businesses since 2018.
+        Building high-performance web systems and digital campaigns for ambitious brands since 2018.
       </p>
     </div>
   </section>
@@ -69,13 +69,13 @@ const awards = [
       <!-- Story Content -->
       <div class="lg:col-span-8 space-y-6 text-sm text-text-muted leading-relaxed reveal">
         <p>
-          Raynatic Solutions was founded in Melbourne by Marcus Rayn after years of witnessing growing organizations struggle with the traditional "break-fix" consulting model. Too often, IT firms profited from their clients' technical failures, charging high hourly fees to address recurring issues with no incentive to build long-term systems resilience.
+          Raynetic Solutions was founded in Melbourne by Marcus Rayn after years of witnessing growing organizations struggle to coordinate multiple design agencies, freelance developers, and marketing consultants. Too often, companies ended up with fragmented branding, slow loading pages, and paid ad campaigns that failed to deliver measurable return on investment.
         </p>
         <p>
-          We set out to build a different kind of IT company—one built on transparency, predictable flat-rate pricing, and strict SLA accountability. We wanted to offer growing businesses the benefits of having their own dedicated Chief Information Officer and advanced DevOps engineering team at a fraction of the cost of internal hires.
+          We set out to build an integrated digital agency—one built on transparency, custom performance-focused code, and data-driven marketing. We wanted to offer growing businesses a unified team of designers, engineers, and digital marketing managers capable of driving brand presence and customer conversions under a single strategic roadmap.
         </p>
         <p>
-          Today, Raynatic Solutions manages critical cloud infrastructure and support operations for mid-market firms across Australia, Europe, and Southeast Asia. While we have grown, our focus remains on providing proactive, secure systems that allow our clients to focus on growing their businesses.
+          Today, Raynetic Solutions designs custom applications, launches creative branding, and manages paid campaigns for businesses across Australia and globally. While we have grown, our focus remains on delivering strategic digital solutions that allow our clients to focus on expanding their operations.
         </p>
       </div>
 
@@ -217,10 +217,10 @@ const awards = [
     <div class="absolute inset-0 cta-gradient-pulse opacity-40 z-0"></div>
     <div class="max-w-5xl mx-auto px-4 md:px-8 text-center relative z-10 space-y-8 reveal">
       <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight">
-        Experience the Raynatic Difference
+        Experience the Raynetic Difference
       </h2>
       <p class="text-base text-text-muted max-w-xl mx-auto">
-        Contact our Melbourne headquarters today to discuss your IT outsourcing needs and request a free network audit.
+        Contact our Melbourne team today to discuss your digital objectives and request a free website performance audit.
       </p>
       <div class="flex justify-center">
         <a href="/contact" class="px-8 py-4 bg-accent hover:bg-accent/80 text-bg font-sans font-bold rounded-xl transition-all shadow-glow hover:shadow-hover">

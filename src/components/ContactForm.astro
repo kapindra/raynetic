@@ -13,7 +13,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xoqgkkpj"; // Defaul
     </div>
     <h3 class="text-2xl font-bold text-white mb-2">Message Sent!</h3>
     <p class="text-sm text-text-muted max-w-sm mb-6">
-      Thank you for contacting Raynatic Solutions. One of our dedicated account managers will respond to your inquiry within 1 business day.
+      Thank you for contacting Raynetic Solutions. One of our dedicated account managers will respond to your inquiry within 1 business day.
     </p>
     <button 
       id="btn-reset-form" 
@@ -99,10 +99,12 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xoqgkkpj"; // Defaul
           class="w-full px-4 py-3 bg-bg border border-border rounded-xl text-sm text-white focus:border-accent focus:outline-none transition-all cursor-pointer focus:ring-1 focus:ring-accent"
         >
           <option value="" disabled selected>Select a Service</option>
-          <option value="Software Development">Software Development</option>
-          <option value="Cloud Migration & DevOps">Cloud & DevOps</option>
-          <option value="Managed IT Support">Managed IT Support (SLA)</option>
-          <option value="Cybersecurity Consulting">Cybersecurity Services</option>
+          <option value="Web Design & Development">Web Design & Development</option>
+          <option value="Mobile App Development">Mobile App Development</option>
+          <option value="UI/UX Design">UI/UX Design</option>
+          <option value="Digital Marketing Solutions">Digital Marketing Solutions</option>
+          <option value="Search Engine Optimization">Search Engine Optimization</option>
+          <option value="Graphics & Motion Design">Graphics & Motion Design</option>
           <option value="General Inquiry">General / Other Inquiry</option>
         </select>
         <span class="text-xs text-error hidden" id="err-service">Please select a service interest.</span>
@@ -122,7 +124,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xoqgkkpj"; // Defaul
           <option value="$5k - $20k">$5k – $20k</option>
           <option value="$20k - $50k">$20k – $50k</option>
           <option value="$50k+">$50k+</option>
-          <option value="Ongoing Retainer">Ongoing SLA Retainer</option>
+          <option value="Ongoing Retainer">Ongoing Strategy Retainer</option>
         </select>
         <span class="text-xs text-error hidden" id="err-budget">Please select a budget range.</span>
       </div>
@@ -154,7 +156,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xoqgkkpj"; // Defaul
           aria-required="true"
         />
         <label for="consentPolicy" class="text-xs text-text-muted cursor-pointer select-none">
-          I consent to having Raynatic Solutions store my submitted information and contact me in compliance with the <a href="/privacy-policy" target="_blank" class="text-accent hover:underline">Privacy Policy</a>. <span class="text-accent">*</span>
+          I consent to having Raynetic Solutions store my submitted information and contact me in compliance with the <a href="/privacy-policy" target="_blank" class="text-accent hover:underline">Privacy Policy</a>. <span class="text-accent">*</span>
         </label>
       </div>
       <div class="flex items-start gap-3">
@@ -165,14 +167,14 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xoqgkkpj"; // Defaul
           class="mt-1 accent-accent w-4 h-4 cursor-pointer" 
         />
         <label for="newsletterOptIn" class="text-xs text-text-muted cursor-pointer select-none">
-          Keep me updated with privacy-first monthly tech insights and IT strategy recommendations (Optional).
+          Keep me updated with privacy-first monthly digital marketing and growth strategy recommendations (Optional).
         </label>
       </div>
     </div>
 
     <!-- Global Error Notice -->
     <div id="form-error-notice" class="p-4 bg-error/10 border border-error/20 text-error text-xs rounded-xl hidden">
-      Something went wrong. Please check the fields above and try again, or email hello@raynatic.com.au.
+      Something went wrong. Please check the fields above and try again, or email hello@raynetic.com.au.
     </div>
 
     <!-- Submit Button -->

@@ -21,14 +21,14 @@ interface Props {
 const {
   title,
   description,
-  keywords = "IT support Melbourne, managed IT services, cloud migration, software development Australia, cybersecurity consulting",
+  keywords = "digital marketing Melbourne, web design Melbourne, web development, mobile app development, UI/UX design, search engine optimization, graphic design",
   canonicalUrl = Astro.url.href,
-  ogImage = new URL("/assets/og/og-home.jpg", Astro.site || "https://raynatic.com.au").href,
+  ogImage = new URL("/assets/og/og-home.jpg", Astro.site || "https://raynetic.com.au").href,
   articleDetails,
   serviceDetails
 } = Astro.props;
 
-const formattedTitle = title.includes("Raynatic") ? title : `${title} | Raynatic Solutions`;
+const formattedTitle = title.includes("Raynetic") ? title : `${title} | Raynetic Solutions`;
 ---
 
 <!-- Primary Meta Tags -->
@@ -36,7 +36,7 @@ const formattedTitle = title.includes("Raynatic") ? title : `${title} | Raynatic
 <meta name="title" content={formattedTitle} />
 <meta name="description" content={description} />
 <meta name="keywords" content={keywords} />
-<meta name="author" content="Raynatic Solutions" />
+<meta name="author" content="Raynetic Solutions" />
 <meta name="robots" content="index, follow" />
 
 <!-- Open Graph / Facebook -->
@@ -45,7 +45,7 @@ const formattedTitle = title.includes("Raynatic") ? title : `${title} | Raynatic
 <meta property="og:title" content={formattedTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
-<meta property="og:site_name" content="Raynatic Solutions" />
+<meta property="og:site_name" content="Raynetic Solutions" />
 <meta property="og:locale" content="en_AU" />
 
 <!-- Twitter -->
@@ -63,10 +63,10 @@ const formattedTitle = title.includes("Raynatic") ? title : `${title} | Raynatic
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Raynatic Solutions",
-    "url": "https://raynatic.com.au",
-    "logo": "https://raynatic.com.au/assets/images/logo.png",
-    "description": "Premium IT outsourcing, cloud infrastructure migration, managed support, and cybersecurity for ambitious businesses.",
+    "name": "Raynetic Solutions",
+    "url": "https://raynetic.com.au",
+    "logo": "https://raynetic.com.au/images/logo.png",
+    "description": "Premium digital agency providing web design and development, custom mobile applications, UI/UX design, graphics design, and digital marketing.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Level 12, 120 Collins Street",
@@ -82,9 +82,9 @@ const formattedTitle = title.includes("Raynatic") ? title : `${title} | Raynatic
       "availableLanguage": ["English"]
     },
     "sameAs": [
-      "https://www.linkedin.com/company/raynatic",
-      "https://twitter.com/raynatic",
-      "https://github.com/raynatic"
+      "https://www.linkedin.com/company/raynetic",
+      "https://twitter.com/raynetic",
+      "https://github.com/raynetic"
     ]
   }
 </script>
@@ -94,11 +94,11 @@ const formattedTitle = title.includes("Raynatic") ? title : `${title} | Raynatic
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Raynatic Solutions",
-    "url": "https://raynatic.com.au",
+    "name": "Raynetic Solutions",
+    "url": "https://raynetic.com.au",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://raynatic.com.au/blog?q={search_term_string}",
+      "target": "https://raynetic.com.au/blog?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   }
@@ -110,10 +110,10 @@ const formattedTitle = title.includes("Raynatic") ? title : `${title} | Raynatic
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "Raynatic Solutions",
-      "image": "https://raynatic.com.au/assets/images/logo.png",
+      "name": "Raynetic Solutions",
+      "image": "https://raynetic.com.au/images/logo.png",
       "telephone": "+61 3 9000 0000",
-      "email": "hello@raynatic.com.au",
+      "email": "hello@raynetic.com.au",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Level 12, 120 Collins Street",
@@ -150,10 +150,10 @@ const formattedTitle = title.includes("Raynatic") ? title : `${title} | Raynatic
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Raynatic Solutions",
+      "name": "Raynetic Solutions",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://raynatic.com.au/assets/images/logo.png"
+        "url": "https://raynetic.com.au/images/logo.png"
       }
     },
     "description": description
@@ -171,7 +171,7 @@ const formattedTitle = title.includes("Raynatic") ? title : `${title} | Raynatic
     "provider": {
       "@type": "LocalBusiness",
       "name": serviceDetails.providerName,
-      "url": "https://raynatic.com.au"
+      "url": "https://raynetic.com.au"
     }
   })}>
   </script>

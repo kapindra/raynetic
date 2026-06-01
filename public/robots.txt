@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /api/
-Sitemap: https://raynatic.com.au/sitemap.xml
+Sitemap: https://raynetic.com.au/sitemap.xml

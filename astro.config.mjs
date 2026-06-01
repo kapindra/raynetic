@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://raynatic.com.au',
+  site: 'https://raynetic.com.au',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]

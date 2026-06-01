@@ -29,7 +29,7 @@ Select the appropriate approach for each application:
 * **Replatform**: Adjusting applications to run better in the cloud (e.g., moving databases to managed cloud services).
 * **Refactor (Re-architect)**: Redesigning applications to take full advantage of cloud-native features.
 
-For complex applications, working with an experienced [DevOps engineering provider](/services/cloud-devops) is highly recommended to select the best strategy and write Infrastructure as Code (IaC) templates.
+For complex applications, working with an experienced [web engineering provider](/services/web-design-development) is highly recommended to select the best strategy and build optimized systems.
 
 ## Phase 2: Security and Setup
 
@@ -70,11 +70,11 @@ The migration project does not end when your applications are running in the clo
 ### 12. Audit Cloud Costs and Performance
 Review your cloud usage monthly. Adjust server sizes and database capacities to optimize performance and prevent cloud bills from exceeding your budget.
 
-For companies that lack internal cloud specialists, hiring a team for [managed IT support](/services/managed-it-support) is a cost-effective way to ensure your cloud systems are monitored, patched, and optimized.
+For companies that lack internal digital specialists, hiring a team for [web design & development support](/services/web-design-development) is a cost-effective way to ensure your systems are monitored, updated, and optimized.
 
 ## Conclusion: Plan for Success
 
 Migrating to the cloud is a significant project that can transform your business agility. By following a structured cloud migration checklist, you can minimize the risks of outages and security issues and build a secure, scalable foundation for your business growth.
 
-At Raynatic Solutions, we help companies plan and execute secure cloud migrations. Contact our team in Melbourne today to discuss your project requirements and get a custom cloud migration assessment.
+At Raynetic Solutions, we help companies design, build, and optimize high-performance web applications. Contact our team in Melbourne today to discuss your project requirements and get a custom digital assessment.
 ---
