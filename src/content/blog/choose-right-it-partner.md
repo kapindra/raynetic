@@ -6,7 +6,7 @@ author: "Marcus Rayn"
 category: "IT Support"
 tags: ["outsourcing", "it-support", "partnership"]
 excerpt: "Learn how to select the right IT outsourcing partner for your Australian business. Avoid common traps, check certifications, and choose the best managed service provider."
-coverImage: "/assets/blog/cover-partner.jpg"
+coverImage: "/assets/blog/cover-partner.png"
 readTime: "9 min read"
 draft: false
 ---

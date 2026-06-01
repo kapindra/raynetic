@@ -6,7 +6,7 @@ author: "Marcus Rayn"
 category: "Cloud & DevOps"
 tags: ["cloud", "migration", "devops", "checklist"]
 excerpt: "Planning a cloud migration? Follow our comprehensive 12-step cloud migration checklist to ensure a secure, smooth transition with zero business disruption."
-coverImage: "/assets/blog/cover-cloud.jpg"
+coverImage: "/assets/blog/cover-cloud.png"
 readTime: "6 min read"
 draft: false
 ---

@@ -6,7 +6,7 @@ author: "Marcus Rayn"
 category: "IT Support"
 tags: ["it-support", "business-continuity", "cost-optimization"]
 excerpt: "Discover the hidden expenses behind network outages. Calculate the real cost of IT downtime for Australian businesses and how to mitigate operational risks."
-coverImage: "/assets/blog/cover-downtime.jpg"
+coverImage: "/assets/blog/cover-downtime.png"
 readTime: "7 min read"
 draft: false
 ---
