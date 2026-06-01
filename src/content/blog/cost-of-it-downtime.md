@@ -6,7 +6,7 @@ author: "Animesh Koirala"
 category: "IT Support"
 tags: ["it-support", "business-continuity", "cost-optimization"]
 excerpt: "Discover the hidden expenses behind network outages. Calculate the real cost of IT downtime for Australian businesses and how to mitigate operational risks."
-coverImage: "/assets/blog/cover-downtime.png"
+coverImage: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
 readTime: "7 min read"
 draft: false
 ---

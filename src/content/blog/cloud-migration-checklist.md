@@ -6,7 +6,7 @@ author: "Animesh Koirala"
 category: "Cloud & DevOps"
 tags: ["cloud", "migration", "devops", "checklist"]
 excerpt: "Planning a cloud migration? Follow our comprehensive 12-step cloud migration checklist to ensure a secure, smooth transition with zero business disruption."
-coverImage: "/assets/blog/cover-cloud.png"
+coverImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
 readTime: "6 min read"
 draft: false
 ---
@@ -76,5 +76,5 @@ For companies that lack internal digital specialists, hiring a team for [web des
 
 Migrating to the cloud is a significant project that can transform your business agility. By following a structured cloud migration checklist, you can minimize the risks of outages and security issues and build a secure, scalable foundation for your business growth.
 
-At Raynetic Solutions, we help companies design, build, and optimize high-performance web applications. Contact our team in Melbourne today to discuss your project requirements and get a custom digital assessment.
+At Raynetic Solutions, we help companies design, build, and optimize high-performance web applications. Contact our team in Brisbane today to discuss your project requirements and get a custom digital assessment.
 ---
