@@ -2,7 +2,7 @@
 title: "How to Choose the Right IT Outsourcing Partner in 2025"
 slug: "choose-right-it-partner"
 date: 2025-01-20
-author: "Marcus Rayn"
+author: "Animesh Koirala"
 category: "IT Support"
 tags: ["outsourcing", "it-support", "partnership"]
 excerpt: "Learn how to select the right IT outsourcing partner for your Australian business. Avoid common traps, check certifications, and choose the best managed service provider."

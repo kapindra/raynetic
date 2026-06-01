@@ -2,7 +2,7 @@
 title: "The True Cost of IT Downtime for Australian SMBs"
 slug: "cost-of-it-downtime"
 date: 2025-01-15
-author: "Marcus Rayn"
+author: "Animesh Koirala"
 category: "IT Support"
 tags: ["it-support", "business-continuity", "cost-optimization"]
 excerpt: "Discover the hidden expenses behind network outages. Calculate the real cost of IT downtime for Australian businesses and how to mitigate operational risks."

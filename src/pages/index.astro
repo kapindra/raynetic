@@ -368,42 +368,42 @@ const partners = [
       <div class="lg:col-span-6 space-y-6 reveal">
         <span class="text-xs uppercase tracking-widest text-accent font-mono font-bold">Why Choose Us</span>
         <h2 class="text-3xl md:text-5xl font-bold text-white">The Raynetic Solutions Difference</h2>
-        <p class="text-text-muted">
+        <p class="text-lg text-text-muted leading-relaxed">
           We act as a strategic expansion of your team, providing transparent flat-rate pricing models, experienced local managers, and high-performance digital strategies.
         </p>
 
         <div class="space-y-4 pt-4">
           <div class="flex items-start gap-4">
-            <div class="p-1 bg-accent/20 text-accent rounded-full mt-1">
+            <div class="flex items-center justify-center w-6 h-6 bg-accent/20 text-accent rounded-full flex-shrink-0 mt-1">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </div>
             <div>
               <h4 class="text-base font-bold text-white">Predictable Scope & Retainer Pricing</h4>
-              <p class="text-sm text-text-muted mt-1">No surprise consulting rates or hidden agency fees. We provide clear, value-driven scopes tailored to your budget constraints.</p>
+              <p class="text-base text-text-muted mt-1">No surprise consulting rates or hidden agency fees. We provide clear, value-driven scopes tailored to your budget constraints.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <div class="p-1 bg-accent/20 text-accent rounded-full mt-1">
+            <div class="flex items-center justify-center w-6 h-6 bg-accent/20 text-accent rounded-full flex-shrink-0 mt-1">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </div>
             <div>
               <h4 class="text-base font-bold text-white">Dedicated Melbourne Brand Managers</h4>
-              <p class="text-sm text-text-muted mt-1">Direct contact numbers to designers, developers, and copywriters who lead your project from concept to launch.</p>
+              <p class="text-base text-text-muted mt-1">Direct contact numbers to designers, developers, and copywriters who lead your project from concept to launch.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <div class="p-1 bg-accent/20 text-accent rounded-full mt-1">
+            <div class="flex items-center justify-center w-6 h-6 bg-accent/20 text-accent rounded-full flex-shrink-0 mt-1">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </div>
             <div>
               <h4 class="text-base font-bold text-white">Performance-Driven Strategy</h4>
-              <p class="text-sm text-text-muted mt-1">We engineer lightweight codebases that load instantly, optimized layouts designed to convert, and target-focused ad campaigns.</p>
+              <p class="text-base text-text-muted mt-1">We engineer lightweight codebases that load instantly, optimized layouts designed to convert, and target-focused ad campaigns.</p>
             </div>
           </div>
         </div>
@@ -462,7 +462,7 @@ const partners = [
             <div class="space-y-4">
               <span class="text-3xl font-bold font-mono text-accent-2 block">{step.num}</span>
               <h3 class="text-lg font-bold text-white">{step.title}</h3>
-              <p class="text-xs text-text-muted leading-relaxed">{step.desc}</p>
+              <p class="text-base text-text-muted leading-relaxed">{step.desc}</p>
             </div>
           </div>
         ))}
@@ -515,7 +515,7 @@ const partners = [
             <div class="flex items-center justify-between border-t border-border pt-6 mt-auto">
               <div>
                 <h4 class="text-sm font-bold text-white">{item.author}</h4>
-                <p class="text-xs text-text-muted font-mono mt-1">{item.role}, {item.company}</p>
+                <p class="text-sm text-text-muted font-mono mt-1">{item.role}, {item.company}</p>
               </div>
               <div class="flex text-accent gap-1 text-sm">
                 {"★".repeat(item.rating)}
@@ -561,10 +561,10 @@ const partners = [
                 <span class="text-[10px] text-text-muted font-mono block">
                   {new Date(post.data.date).toLocaleDateString('en-AU', { year: 'numeric', month: 'short', day: 'numeric' })} &bull; {post.data.readTime}
                 </span>
-                <h3 class="text-base font-bold text-white leading-tight hover:text-accent transition-colors">
+                <h3 class="text-lg font-bold text-white leading-tight hover:text-accent transition-colors">
                   <a href={`/blog/${post.id}`}>{post.data.title}</a>
                 </h3>
-                <p class="text-xs text-text-muted line-clamp-3 leading-relaxed">
+                <p class="text-base text-text-muted line-clamp-3 leading-relaxed">
                   {post.data.excerpt}
                 </p>
               </div>

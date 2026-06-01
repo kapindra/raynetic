@@ -9,7 +9,7 @@ const values = [
 ];
 
 const team = [
-  { name: 'Marcus Rayn', title: 'Managing Director & Founder', initials: 'MR' },
+  { name: 'Animesh Koirala', title: 'Chief Executive Officer & Founder', initials: 'AK' },
   { name: 'Elena Rostova', title: 'Director of UI/UX Design', initials: 'ER' },
   { name: 'Thomas Vance', title: 'Head of Digital Strategy', initials: 'TV' },
   { name: 'Sarah Jenkins', title: 'Lead Web Developer', initials: 'SJ' }
@@ -67,9 +67,9 @@ const awards = [
       </div>
 
       <!-- Story Content -->
-      <div class="lg:col-span-8 space-y-6 text-sm text-text-muted leading-relaxed reveal">
+      <div class="lg:col-span-8 space-y-6 text-lg text-text-muted leading-relaxed reveal">
         <p>
-          Raynetic Solutions was founded in Melbourne by Marcus Rayn after years of witnessing growing organizations struggle to coordinate multiple design agencies, freelance developers, and marketing consultants. Too often, companies ended up with fragmented branding, slow loading pages, and paid ad campaigns that failed to deliver measurable return on investment.
+          Raynetic Solutions was founded in Melbourne by Animesh Koirala after years of witnessing growing organizations struggle to coordinate multiple design agencies, freelance developers, and marketing consultants. Too often, companies ended up with fragmented branding, slow loading pages, and paid ad campaigns that failed to deliver measurable return on investment.
         </p>
         <p>
           We set out to build an integrated digital agency—one built on transparency, custom performance-focused code, and data-driven marketing. We wanted to offer growing businesses a unified team of designers, engineers, and digital marketing managers capable of driving brand presence and customer conversions under a single strategic roadmap.
@@ -77,6 +77,27 @@ const awards = [
         <p>
           Today, Raynetic Solutions designs custom applications, launches creative branding, and manages paid campaigns for businesses across Australia and globally. While we have grown, our focus remains on delivering strategic digital solutions that allow our clients to focus on expanding their operations.
         </p>
+
+        <!-- CEO Profile Signature Block -->
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 pt-8 border-t border-border mt-8">
+          <div class="w-64 h-64 rounded-2xl overflow-hidden border border-border bg-surface/50 shadow-card flex-shrink-0">
+            <img 
+              src="/Animesh Koirala.jpg" 
+              alt="Animesh Koirala, CEO of Raynetic Solutions"
+              class="w-full h-full object-cover" 
+              width="256"
+              height="256"
+              loading="lazy"
+            />
+          </div>
+          <div class="space-y-2 text-center sm:text-left">
+            <h4 class="text-xl font-bold text-white font-display">Animesh Koirala</h4>
+            <p class="text-sm font-mono text-accent">Chief Executive Officer</p>
+            <p class="text-base text-text-muted max-w-md">
+              "We believe custom code and creative, data-backed design are the ultimate growth accelerators. We work hand-in-hand with our clients to transform operations and drive results."
+            </p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -104,7 +125,7 @@ const awards = [
             </div>
             <div class="space-y-2">
               <h3 class="text-base font-bold text-white">{val.name}</h3>
-              <p class="text-xs text-text-muted leading-relaxed">{val.desc}</p>
+              <p class="text-base text-text-muted leading-relaxed">{val.desc}</p>
             </div>
           </div>
         ))}
@@ -121,19 +142,19 @@ const awards = [
       <div class="max-w-3xl mb-16 space-y-4 reveal">
         <span class="text-xs uppercase tracking-widest text-accent font-mono font-bold">People</span>
         <h2 class="text-3xl font-bold text-white">Our Leadership Team</h2>
-        <p class="text-text-muted">A dedicated group of senior cloud architects, security operations leads, and client advocates based in Melbourne.</p>
+        <p class="text-text-muted">A dedicated group of senior designers, developers, and campaign strategists based in Melbourne.</p>
       </div>
 
       <!-- Team Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="flex flex-wrap justify-center gap-8">
         {team.map(member => (
-          <div class="glass-panel border border-border rounded-2xl p-6 text-center hover-glow reveal">
+          <div class="glass-panel border border-border rounded-2xl p-6 text-center hover-glow reveal w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] min-w-[240px] max-w-[280px]">
             <!-- Circular Placeholder Photo -->
             <div class="w-24 h-24 bg-accent-2/10 border border-accent rounded-full mx-auto flex items-center justify-center text-accent text-2xl font-bold font-mono mb-6">
               {member.initials}
             </div>
             <h3 class="text-base font-bold text-white">{member.name}</h3>
-            <p class="text-xs text-text-muted font-mono mt-1 mb-6">{member.title}</p>
+            <p class="text-sm text-text-muted font-mono mt-1 mb-6">{member.title}</p>
             
             <!-- LinkedIn link -->
             <a 
@@ -178,7 +199,7 @@ const awards = [
               <div class="glass-panel border border-border p-6 rounded-2xl reveal">
                 <span class="text-lg font-bold font-mono text-accent-2 block mb-2">{item.year}</span>
                 <h3 class="text-base font-bold text-white mb-2">{item.title}</h3>
-                <p class="text-xs text-text-muted leading-relaxed">{item.desc}</p>
+                <p class="text-base text-text-muted leading-relaxed">{item.desc}</p>
               </div>
             </div>
             <div class="hidden md:block w-1/2"></div>
@@ -204,7 +225,7 @@ const awards = [
         {awards.map(item => (
           <div class="glass-panel border border-border p-6 rounded-2xl text-center reveal">
             <h3 class="text-base font-bold text-white mb-2">{item.name}</h3>
-            <p class="text-xs text-text-muted font-mono">{item.desc}</p>
+            <p class="text-base text-text-muted font-mono">{item.desc}</p>
           </div>
         ))}
       </div>

@@ -52,14 +52,14 @@ const sortedServices = services.sort((a, b) => (a.data.order || 99) - (b.data.or
               <p class="text-xs text-accent font-mono uppercase tracking-wider">{service.data.headline}</p>
               
               <!-- Service Excerpt -->
-              <p class="text-sm text-text-muted leading-relaxed">
+              <p class="text-base text-text-muted leading-relaxed">
                 {service.data.excerpt}
               </p>
               
               <!-- Service Core Focus Points -->
               <ul class="space-y-2 pt-2">
                 {service.data.features.slice(0, 3).map(feat => (
-                  <li class="flex items-start gap-3 text-xs text-text-muted">
+                  <li class="flex items-start gap-3 text-base text-text-muted">
                     <span class="text-accent mt-0.5">•</span>
                     <span>{feat}</span>
                   </li>

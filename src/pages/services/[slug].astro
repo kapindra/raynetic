@@ -57,7 +57,7 @@ const serviceDetails = {
       <div class="lg:col-span-8 space-y-12">
         
         <!-- Markdown Body Content -->
-        <div class="prose prose-invert max-w-none prose-headings:font-display prose-headings:font-bold prose-p:text-text-muted prose-p:leading-relaxed prose-h3:text-white prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4">
+        <div class="prose max-w-none">
           <Content />
         </div>
 
@@ -67,8 +67,8 @@ const serviceDetails = {
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {service.data.features.map(feat => (
               <div class="flex items-start gap-3 p-4 bg-surface/50 border border-border rounded-xl">
-                <span class="p-1 bg-accent/20 text-accent rounded-full text-xs flex-shrink-0 mt-0.5">✓</span>
-                <span class="text-xs text-text-muted leading-relaxed">{feat}</span>
+                <span class="flex items-center justify-center w-5 h-5 bg-accent/20 text-accent rounded-full text-xs flex-shrink-0 mt-0.5" aria-hidden="true">✓</span>
+                <span class="text-base text-text-muted leading-relaxed">{feat}</span>
               </div>
             ))}
           </div>
@@ -87,7 +87,7 @@ const serviceDetails = {
                   </div>
                   <div>
                     <h4 class="text-sm font-bold text-white mb-1">{title}</h4>
-                    <p class="text-xs text-text-muted leading-relaxed">{desc}</p>
+                    <p class="text-base text-text-muted leading-relaxed">{desc}</p>
                   </div>
                 </div>
               );
@@ -107,7 +107,7 @@ const serviceDetails = {
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
-                <p class="text-xs text-text-muted leading-relaxed mt-4 pt-4 border-t border-border">
+                <p class="text-base text-text-muted leading-relaxed mt-4 pt-4 border-t border-border">
                   {faq.answer}
                 </p>
               </details>
@@ -122,7 +122,7 @@ const serviceDetails = {
         <!-- Who It's For Card -->
         <div class="glass-panel border border-border p-8 rounded-2xl space-y-6 shadow-card">
           <h3 class="text-base font-bold text-white font-display">Ideal Profile</h3>
-          <p class="text-xs text-text-muted leading-relaxed">
+          <p class="text-base text-text-muted leading-relaxed">
             {service.data.whoItFor}
           </p>
         </div>
@@ -131,8 +131,8 @@ const serviceDetails = {
         <div class="glass-panel border border-accent/20 bg-accent/5 p-8 rounded-2xl space-y-6 shadow-glow relative overflow-hidden">
           <div class="absolute inset-0 bg-radial-gradient from-accent/10 to-transparent pointer-events-none"></div>
           <h3 class="text-base font-bold text-white font-display relative z-10">Get a Free Assessment</h3>
-          <p class="text-xs text-text-muted leading-relaxed relative z-10">
-            Request a free 30-minute infrastructure consult. We will audit your current workflows and provide recommendations.
+          <p class="text-base text-text-muted leading-relaxed relative z-10">
+            Request a free 30-minute growth assessment. We will audit your current digital channels and provide custom suggestions.
           </p>
           <a href="/contact" class="w-full text-center block py-3 bg-accent text-bg font-sans font-bold text-xs rounded-xl transition-all shadow-glow hover:shadow-hover relative z-10">
             Book a consultation
