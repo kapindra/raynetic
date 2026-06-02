@@ -1,5 +1,6 @@
 ---
-const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xoqgkkpj"; // Default fallback endpoint
+// PHP mailer endpoint hosted on the same cPanel server
+const mailerEndpoint = "/mailer.php";
 ---
 
 <div class="glass-panel p-8 md:p-10 rounded-2xl border border-border shadow-card relative overflow-hidden">
@@ -24,7 +25,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || "xoqgkkpj"; // Defaul
   </div>
 
   <!-- Form -->
-  <form id="contact-form" action={`https://formspree.io/f/${formspreeId}`} method="POST" class="space-y-6">
+  <form id="contact-form" action={mailerEndpoint} method="POST" class="space-y-6">
     
     <!-- Spam Honeypot Field (Hidden from users) -->
     <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
